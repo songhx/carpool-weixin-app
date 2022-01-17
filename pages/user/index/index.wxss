@@ -1,0 +1,150 @@
+/* pages/user/index/index.wxss */
+page{
+    margin-bottom:40rpx;
+}
+.user_box{
+    padding:20rpx 30rpx 0;
+    background: url('https://e-carpool.oss-cn-beijing.aliyuncs.com/my_bg.png') no-repeat;
+    background-size:100%;
+    margin-bottom:20rpx;
+}
+.user_info{
+    height:322rpx;
+    border-radius: 15rpx;
+    padding:30rpx 50rpx 0;
+}
+.avatar_box{
+    border-bottom: 1px solid #E8E8E8;
+    padding-bottom:30rpx;
+}
+.name{
+    margin-bottom:15rpx;
+}
+.avatar{
+    width:118rpx;
+    height:118rpx;
+    border-radius:50%;
+    margin-right:20rpx;
+}
+.done{
+  background-image: linear-gradient(90deg, #FFBD27 0%, #FF8811 96%);
+}
+.undo{
+  background: #DBDBDB;
+}
+.approve_box{
+    width:128rpx;
+    height:40rpx;
+    border-radius: 2rpx;
+}
+.icon_approve{
+    width:21rpx;
+    height:25rpx;
+    margin-right:10rpx;
+}
+.no_real_name{
+    width:128rpx;
+    height:40rpx;
+    margin-right:15rpx;
+    border-radius: 2rpx;
+}
+.no_real_name image{
+    width:25rpx;
+    height:25rpx;
+    margin-right:10rpx;
+}
+.icon_car{
+    width:23rpx;
+    height:20rpx;
+    margin-right:9rpx;
+    margin-top:5rpx;
+
+}
+.icon_passengers{
+    width:26rpx;
+    height:20rpx;
+    margin-right:9rpx;
+    margin-top:5rpx;
+
+}
+.list_box{
+    padding:0 30rpx;
+    margin-bottom:20rpx;
+}
+.list_item{
+    height:99rpx;
+    border-bottom:1px solid #DFDFDF;
+}
+.no_border{
+    border-bottom:none;
+}
+.icon_go{
+    width:15rpx;
+    height:26rpx;
+}
+.icon_mine01{
+    width:46rpx;
+    height:46rpx;
+}
+.icon_mine02{
+    width:46rpx;
+    height:46rpx;
+}
+.icon_mine03{
+    width:46rpx;
+    height:46rpx;
+}
+.icon_mine04{
+    width:46rpx;
+    height:43rpx;
+}
+.icon_mine05{
+    width:46rpx;
+    height:43rpx;
+}
+.icon_mine06{
+    width:46rpx;
+    height:43rpx;
+}
+.mr20{
+    margin-right:20rpx
+}
+.carpool_image{
+    height:165rpx;
+    padding:0 20rpx;
+}
+.icon_carpool{
+    height:100%;
+    width:100%;
+    border-radius:10rpx;
+}
+
+button.form_button{
+    background-color:transparent; 
+    position: absolute;
+    z-index: 100;
+    padding:0;
+    margin:0;
+    display:inline;
+    /* position:static; */
+    border-bottom-width: 0px;
+    border:0;
+    padding-left:0;
+    padding-right:0;
+    border-radius:0;
+    font-size:0rpx;
+    color:transparent;
+    width:96%;
+    height:7%;
+
+  }
+
+ button.form_button::after{
+    content:'';
+    /* width:0;
+    height:0; */
+    -webkit-transform:scale(1);
+    transform:scale(1);
+    display:none;
+    background-color:transparent;
+  } 

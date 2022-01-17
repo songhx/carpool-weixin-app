@@ -1,0 +1,107 @@
+.box{
+    width: 100%;
+  height: 100%;
+  background:#F2F2F2;
+    padding-top: 5rpx;
+}
+.record-content{
+  width: 726rpx;
+  height: 228rpx;
+  background: #FFFFFF;
+  box-shadow: 0 0 8rpx 0 rgba(0,0,0,0.15);
+  border-radius: 10rpx;
+  margin: 10rpx auto;
+  position: relative;
+  font-size: 28rpx;
+}
+.record-box{
+  display: flex;
+  flex-direction: column;
+}
+.record-status{
+  position: absolute;
+  right: 40rpx;
+  color: #999999;
+  z-index: 1;
+  top:  32rpx;
+}
+.carp-row{
+  width: 17rpx;
+  height: 17rpx;
+  display: inline-block;
+  border-radius: 50% 50%;
+  margin-left: 48rpx;
+  margin-right: 15rpx;
+}
+.carp-row1{
+  margin-top: 50rpx;
+  background: #CECECE;
+}
+.carp-row1-text{
+    color: #666666;
+}
+.carp-row2{
+  margin-top: 40rpx;
+   color: #666666;
+  background: #7CBF3A;
+}
+.carp-row2-text{
+  color: #999;
+}
+.carp-row3{
+    margin-top: 30rpx;
+ background: #FF655E;
+}
+
+
+
+
+
+
+   /***通用布局样式*/
+   .box-textarea{
+    border-bottom: 1px solid #DFDFDF;
+    font-size: 30rpx;
+    color: #666666;
+  }
+
+  .textarea-label{
+    font-size: 30rpx;
+    color: #666666;
+    margin-left:11px;
+    margin-top:9px;
+    margin-bottom:9px;
+  }
+
+  .textarea-placeholder{
+      font-size: 30rpx;
+      color:#999;
+  }
+  .textarea-c{
+    height: 66px;
+    margin-left: 36px;
+    color: #999;
+  } 
+
+.ui-textarea-box{
+  width: 100%;
+  height: 90px;
+  border-bottom: 1px solid #DFDFDF;
+  padding: 29.5rpx 0 29.5rpx 30rpx;
+}
+.ui-textarea-content{
+  margin: 3px 20px 3px 20px;
+  color: #999;
+}
+
+.reason-textarea{
+   width:94%;
+  padding:25rpx;
+  min-height:160rpx;
+  box-sizing:border-box;
+  border:1px solid #DFDFDF;
+  margin:50px 10px 6px 10px;
+  background:#fff;
+  font-size: 30rpx;
+  color: #666666;
+}

@@ -1,0 +1,132 @@
+<view class="container">
+    <view class="carpoolList">
+        <!--tabs开始-->
+        <view class="tabs bg_ff flex flex_center flex_around font16">
+            <view bindtap='swithchTab' class="{{tabIndex == 0 ? 'active' : ''}}" data-id='0'>区域出行</view>
+            <view bindtap='swithchTab' class="{{tabIndex == 1 ? 'active' : ''}}" data-id='1'>同城出行</view>
+            <view bindtap='swithchTab' class="{{tabIndex == 2 ? 'active' : ''}}" data-id='2'>城际出行</view>
+        </view>
+
+        <!--轮播图开始-->
+        <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+            <swiper-item>
+                <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/banner/deafalut_banner.png" background-size="cover"></image>
+            </swiper-item>
+        </swiper>
+
+        <!--查找行程-->
+        <view class="search_trip bg_ff">
+            <view class="position_box flex flex_center">
+                <view class="part_one flex_1">
+                    <view class="flex flex_center item_line" bindtap='getStartLocation'>
+                        <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_02.png"></image>
+                        <input class="font14 C666" placeholder="您的乘车位置" value="{{startPoint ||'出发地点'}}"/>
+                    </view>
+                    <view class="flex flex_center item_line" bindtap='getEndLocation'>
+                        <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_04.png"></image>
+                        <input class="font14 C666" placeholder="您要去哪？" value="{{destination ||'目标地点'}}"/>
+                    </view>
+                </view>
+                <view class="part_two" bindtap='switchLocation'>
+                    <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/icon_switch.png"></image>
+                </view>
+            </view>
+            <view class="select_time flex flex_center">
+                <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_01.png"></image>
+                <text class="C666 font15 label">出发时间</text>
+               <view class='row'>
+                    <view class='start-time-picker'>
+                      <picker mode="date" start="{{dateStartVal}}" end="{{dateEndtVal}}" value='{{departureDate}}' bindchange="bindDateChange">
+                          <view>{{departureDate}}</view>
+                      </picker> 
+                    </view>
+                    <view class='start-time-picker2'>
+                      <picker mode="time" start="00" end="23" value='{{departureTime}}' bindchange="bindTimeChange">
+                        <view>{{departureTime}}</view>
+                      </picker> 
+                    </view>
+                </view>
+            </view>
+            <view class="flex flex_center flex_just" style="height:136rpx;" bindtap='refresh'>
+                <image class="icon_search_trip" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/search_trip.png"></image>
+            </view>
+        </view>
+
+        <!--列表开始-->
+        <view wx:if="{{publishList != null && publishList.length > 0 }}" class="list">
+          <block wx:for="{{publishList}}" wx:key="{{key}}">
+                <view  class="single_item  bg_ff">
+                    <view bindtap='toDetail' data-id='{{item.id}}' class="flex flex_between flex_center name_box" >
+                        <view class="left_part flex flex_center">
+                            <image src="{{item.avatar}}"></image>
+                            <view class="font16 strong">{{item.userName}}</view>
+                        </view>
+                        <view class="state flex flex_colum flex_center">
+                            <view wx:if="{{userType == 1}}" class="carPlate">{{item.plateNumberPrefix || ""}}{{item.plateNumber || ""}}</view>
+                            <view wx:if="{{userType == 1}}" class="C666 mt6">{{item.carBrand}}, {{item.carColor}},{{item.carType}}</view>
+                        </view>
+                    </view>
+                    <view class="process">
+                        <view bindtap='toDetail' data-id='{{item.id}}' class="flex flex_between mb30">
+                            <view class="part_one flex">
+                                <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_01.png"></image>
+                                <view class="font15 flex_1 line42">{{item.departureTime}}</view>
+                            </view>
+                            <view class="font15 C666">{{userType == 1 ? '余' : '需'}}<text class="C655E">{{item.passengerNum || "0"}}</text>座</view>
+                        </view>
+                        <view bindtap='toDetail' data-id='{{item.id}}' class="part_one flex mb30">
+                            <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_02.png"></image>
+                            <view class="font15 flex_1 line42">{{item.startPoint}}</view>
+                        </view>
+                        <view wx:if="{{userType == 1}}" class="part_one flex  mb30">
+                            <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_03.png"></image>
+                            <view class="font15 flex_1 line42 process_city ">
+                                  {{item.isFold ? item.byWaysOmit : item.byWays }}
+                            </view>
+                            <image class="icon_more"  src="https://e-carpool.oss-cn-beijing.aliyuncs.com/{{item.isFold ? 'icon_more' : 'icon_less' }}.png" 
+                                data-id='{{item.id}}' catchtap="toggle"></image>
+                        </view>
+                        <view bindtap='toDetail' data-id='{{item.id}}' class="part_one flex">
+                            <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_04.png"></image>
+                            <view class="font15 flex_1 line42">{{item.destination}}</view>
+                        </view>
+                    </view>
+                    <view class="price_box" wx:if="{{userType == 1}}">
+                        <view class="font16">￥{{item.price || ""}}/位</view>
+                    </view>
+                    <view class="connect_type flex flex_center flex_just">
+                        <image bindtap='callPhone' data-mobile='{{item.mobile}}'
+                             class="type_phone"  src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/type_phone.png"></image>
+                        <image bindtap='copyWxCode'
+                             src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/type_wechat.png"></image>
+                    </view>
+                </view>
+           </block>
+            
+        </view>
+        
+        <view wx:else class="no_search bg_ff flex  flex_colum flex_center">
+            <image src="/static/images/no_search.png"></image>
+            <view class="C666">暂无信息</view>
+        </view>
+
+    </view>
+</view>
+
+
+ <!--复制微信号码-->
+    <view class="mask"  wx:if="{{showModal}}">
+        <view class="float_box">
+            <image src="/static/images/bindSuccess.png"></image>
+            <view class="tip">
+                <view class="C8181 font16" style="text-align:center;margin-bottom:15rpx;">温馨提示</view>
+                <view class="C860 font15">{{modalTitle}}</view>
+            </view>
+            <view class="sure_btn" bindtap="closeFloat">确认</view>
+        </view>
+    </view>
+
+<view bindtap='toIndex' class="fixed_right flex flex_center flex_just flex_colum">
+    <image src="/static/images/icon_home.png"></image>
+    <view>回到首页</view>
+</view>

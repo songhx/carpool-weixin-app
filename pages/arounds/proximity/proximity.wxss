@@ -1,0 +1,33 @@
+@import "/static/css/common.wxss";
+page{
+  height: 100%;
+}
+.map_container{ 
+    height: 83%; 
+    width: 100%; 
+} 
+
+.map { 
+    height: 100%; 
+    width: 100%; 
+} 
+
+.place_info{
+  width: 100%;
+  min-height: 150rpx;
+  background: rgb(243, 237, 237);
+  color: #666;
+  font-size:29rpx;
+  z-index: 999;
+}
+.info{
+  padding:13rpx 13rpx;
+  color:#666;
+}
+.p_title{
+  font-weight: 399;
+}
+.p_value{
+  margin-left: 6px;
+  font-size:10pt;
+}

@@ -1,0 +1,21 @@
+<!--pages/riderscircle/proximity/proximity.wxml-->
+<view class="map_container"> 
+  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="18" show-location="true" markers="{{markers}}" bindmarkertap="makertap"></map> 
+</view> 
+<view class="place_info" wx:if="{{placeData.title != null && placeData.title != undefinded }}">  
+    <view class='record-box'>
+      <view style="margin-left: -16rpx;">
+         <view  class="carp-row carp-row2"></view>
+         <text class='carp-row2-text'>名称：{{placeData.title || ""}}</text>
+      </view>
+       <view style="margin-left: -16rpx;">
+         <view  class="carp-row carp-row2"></view>
+         <text class='carp-row2-text'>地址：{{placeData.address || ""}}</text>
+       </view>
+       <view style="margin-left: -16rpx; margin-bottom:16rpx;">
+         <view  class="carp-row carp-row3"></view>
+         <text class='carp-row2-text'>电话：{{placeData.telephone || ""}}</text>
+       </view>
+   </view>
+
+</view> 

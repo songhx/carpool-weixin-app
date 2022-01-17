@@ -1,0 +1,46 @@
+<view class="header" hidden="{{hideHeader}}">
+  <view>下拉刷新中……</view>
+  <view>{{refreshTime}}</view>
+</view>
+<!--导航开始-->
+  <scroll-view class="nav_scroll_x_box" scroll-x="true">
+      <form bindsubmit="switchTab" report-submit='true' class="nav-item {{item.isActive ? 'active' : ''}}" wx:for="{{navs}}" wx:key="item" >
+          <input hidden='true' name="userType"  value="{{item.userType}}"></input> 
+          <input hidden='true' name="id"  value="{{item.id}}"></input> 
+          <button form-type="submit"   class='form_button tab_form_button_size'></button> 
+          <view class="nav-title {{ item.isActive ? 'active-txt' : '' }}">{{item.navName}}</view>
+      </form>
+  </scroll-view>
+ <!--导航结束-->
+  <scroll-view class='box'  scroll-y="true" >
+  <view class='record-content' wx:for="{{publishList}}" wx:key="{{key}}">
+     <form bindsubmit="navTo" report-submit='true' class='record-box'>
+     <input hidden='true' name="skip"  value="/pages/user/records/carpoolDetail?id={{item.id}}"></input> 
+      <button form-type="submit"   class='form_button form_button_size'></button> 
+      <view>
+        <view class="carp-row carp-row1"></view>
+        <text class='carp-row1-text'>{{item.departureTime}}</text>
+      </view>
+       <view>
+         <view  class="carp-row carp-row2"></view>
+         <text class='carp-row2-text'>{{item.startPoint}}</text>
+       </view>
+       <view>
+         <view  class="carp-row carp-row3"></view>
+         <text class='carp-row2-text'>{{item.destination}}</text>
+       </view>
+   </form>
+    <view class='record-status'>
+         <text >{{item.status}}</text>
+      </view>
+  </view>
+ </scroll-view>
+ <view class="bottom" hidden="{{hideBottom}}">
+  <view>{{loadMoreData}}</view>
+  <view>{{refreshTime}}</view>
+</view>
+
+<view bindtap='toIndex' class="fixed_right flex flex_center flex_just flex_colum">
+  <image src="/static/images/icon_home.png"></image>
+  <view>回到首页</view>
+</view>

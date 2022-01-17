@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/carpool/carpoolList/carpoolList",
+    "pages/carpool/carpoolDetail/carpoolDetail",
+    "pages/carpool/releaseTrip/releaseTrip",
+    "pages/announcement/announcement",
+    "pages/community/index",
+    "pages/community/detail",
+    "pages/news/index",
+    "pages/news/details",
+    "pages/arounds/index",
+    "pages/arounds/proximity/proximity",
+    "pages/user/index/index",
+    "pages/user/records/carpoolRecord",
+    "pages/user/records/carpoolDetail",
+    "pages/user/orders/orders",
+    "pages/user/orders/detail",
+    "pages/user/feedback/feedback",
+    "pages/user/guide/guide",
+    "pages/user/info/info",
+    "pages/user/info/carInfo",
+    "pages/common/declare/declare",
+    "pages/common/tips/tips",
+    "pages/common/auth/login"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于出行信息的展示"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationStyle": "default",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "易拼车",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "color": "#666",
+    "selectedColor": "#FF8811",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "/img/home.png",
+        "selectedIconPath": "/img/home-selected.png"
+      },
+      {
+        "pagePath": "pages/carpool/releaseTrip/releaseTrip",
+        "text": "发布",
+        "iconPath": "/img/publish.png",
+        "selectedIconPath": "/img/publish-select.png"
+      },
+      {
+        "pagePath": "pages/user/index/index",
+        "text": "我的",
+        "iconPath": "/img/user.png",
+        "selectedIconPath": "/img/user-selected.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

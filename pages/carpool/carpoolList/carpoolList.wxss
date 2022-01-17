@@ -1,0 +1,144 @@
+@import '/static/css/form.wxss';
+page{
+    margin-bottom:40rpx;
+}
+.banner{
+  padding:0 20rpx;
+  margin-top:20rpx;
+}
+
+.search_trip{
+    margin:20rpx 20rpx 0;
+    border-radius: 6rpx;
+}
+.position_box{
+    padding:0 20rpx;
+}
+.part_one .item_line{
+    border-bottom: 2rpx solid #EEEEEE;
+    height:99rpx;
+}
+.part_one .item_line image{
+    width:38rpx;
+    height:38rpx;
+    margin-right:14rpx;
+}
+.position_box .part_two image{
+    width:47rpx;
+    height:47rpx;
+    margin-left:30rpx;
+}
+.select_time{
+    padding:0 20rpx;
+    height:99rpx;
+    border-bottom: 2rpx solid #EEEEEE;
+}
+.select_time image{
+    width:38rpx;
+    height:38rpx;
+    margin-right:14rpx;
+}
+.icon_search_trip{
+    width:466rpx;
+    height:90rpx;
+}
+.single_item{
+    margin:20rpx 20rpx 0;
+    border-radius: 6rpx;
+}
+.single_item .name_box{
+    padding:35rpx 0rpx;
+    margin:0 20rpx;
+    /* border-bottom: 2px solid #EEEEEE; */
+}
+.name_box .left_part image{
+    width:80rpx;
+    height:80rpx;
+    border-radius:50%;
+    margin-right:15rpx;
+}
+.name_box .state{
+    font-size:26rpx;
+}
+.single_item .process{
+    padding:30rpx;
+}
+.single_item .process .part_one image{
+    width:38rpx;
+    height:38rpx;
+    margin-right:10rpx;
+}
+.single_item .process .part_one .icon_more{
+  width:39rpx;
+  height:36rpx;
+  margin-right:0;
+  margin-top:6rpx;
+}
+.price_box{
+    padding:10rpx 30rpx 40rpx;
+}
+.price_box view{
+    color:#FF655E;
+}
+.connect_type{
+    height:101rpx;
+    margin:0 20rpx;
+    border-top: 1px solid #EDEDED;
+}
+.connect_type image{
+    width:310rpx;
+    height:84rpx;
+}
+.type_phone{
+    margin-right:30rpx;
+}
+
+.process_city{
+    width:0;
+    line-height: 40rpx;
+    word-break: break-all;
+    -webkit-box-orient: vertical;/* 关键属性 */
+    -webkit-line-clamp:1;/* 关键属性 */
+    overflow: hidden;/* 关键属性 */
+    text-overflow:ellipsis;/* 超出内容显示省略号*/
+  }
+  .hide{
+   display: -webkit-box;
+  }
+  .show{
+   display: block;
+  }
+
+  .start-time-picker{
+   width: 69%;
+ }
+ .start-time-picker picker{
+   margin:0 auto;
+}
+ .start-time-picker2{
+  margin-left: 19rpx;
+ }
+
+  .start-time-picker2 picker{
+   margin:0 auto;
+}
+
+.carPlate{
+  color:#FFF;
+  background:#c0c0c0;
+  padding:6rpx 6rpx;
+  font-weight:blod;
+  font-size:10pt;
+}
+.no_search{
+    height:100%;
+    margin:20rpx 20rpx 0;
+    padding-bottom: 30rpx;
+    border-radius: 6rpx;
+}
+.no_search image{
+    width:591rpx;
+    height:305rpx;
+    margin-bottom:25rpx;
+    margin-top:121rpx;
+}

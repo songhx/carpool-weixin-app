@@ -1,0 +1,34 @@
+<view class="container">
+  <form bindsubmit="submit" report-submit='true' >
+        <view class="info_box bg_ff">
+            <view class="input_box flex flex_center">
+                <text class="C666 font15 label">反馈标题</text>
+                <input type="text" name="title"  value='{{title}}' placeholder="请输入反馈标题" />
+            </view>
+            <view class="single_line flex">
+                  <text class="C666 font15 label">反馈内容</text>
+                  <textarea name="content" value='{{content}}' placeholder='请输入反馈内容'  
+                       placeholder-class="placeholdText"/>
+            </view>
+          </view>
+
+         <view wx:if="{{upload}}" class="detail_img bg_ff">
+            <view class="C666 font15"  style="margin-bottom:12rpx;">选择图片</view>
+            <view class="issues-img-panel {{(showError&&uploading)?'error':''}} center">
+              <view class="issues-photo-item" wx:if="{{uploading}}">
+                <image class="remind-img" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/loading.gif"></image>
+              </view>
+              <view class="issues-photo-item" wx:for="{{imgs}}" wx:key="*this">
+                <image src="{{item}}" mode="aspectFill" data-index="{{index}}" data-tag="1" bindtap="previewPhoto" bindlongpress="removePhoto"></image>
+              </view>
+              <view class="issues-photo-item add-photo" wx:if="{{!uploading && imgs.length < 3}}" data-tag='1' bindtap="choosePhoto">
+                 <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/add.png"></image>
+              </view>
+            </view>
+             <view class="font14 C999 tip">大小不能超过1M</view>
+        </view>
+
+        <button form-type="submit"   class='submit-btn'>确认</button>
+      
+  </form>
+</view>

@@ -1,0 +1,102 @@
+<view class="container">
+  <form bindsubmit="publishTripSub" report-submit='true' >
+        <view class="info_box bg_ff">
+            <view class="input_box flex flex_center">
+                <text class="C666 font15 label">用户昵称</text>
+                <input type="text" value='{{userInfo.nickName}}' disabled="true" />
+            </view>
+            <view class="input_box flex flex_center">
+                <text class="C666 font15 label">真实姓名</text>
+                <input type="text" name="userName"  value='{{userInfo.userName}}' placeholder="请输入用户姓名" />
+            </view>
+            <view class="input_box flex flex_center">
+                <text class="C666 font15 label">手机号码</text>
+                <input type="text" name="mobile"  value='{{userInfo.mobile}}' placeholder="请输入手机号码"/>
+            </view>
+             <view class="input_box flex flex_center">
+                <text class="C666 font15 label">出行类型</text>
+                <picker bindchange="lisentCarpoolTypeChanges" value="{{carpoolTypeList[carpoolTypeIndex]}}" range="{{carpoolTypeList}}" >
+                      <view class="picker flex flex_between flex_center">
+                        <view>{{carpoolTypeList[carpoolTypeIndex]}}</view>
+                        <image src='https://e-carpool.oss-cn-beijing.aliyuncs.com/down.png'  class='com-sImg'></image>
+                      </view>
+                  </picker>
+            </view>
+            <view class="input_box flex flex_center">
+                <text class="C666 font15 label">身份</text>
+                <view class="flex">
+                    <view class="flex flex_center" style="margin-right:110rpx;"  bindtap='chooseUserType'>
+                        <image wx:if="{{!isDriver}}" class="icon_check_on" src="/static/images/icon_check_on.png"></image>
+                        <image wx:else class="icon_check" src="/static/images/icon_check.png" ></image>
+                        <view  class="font14 C666">乘客</view>
+                    </view>
+                    <view class="flex flex_center" bindtap='chooseUserType'>
+                        <image wx:if="{{isDriver}}" class="icon_check_on" src="/static/images/icon_check_on.png"></image>
+                        <image wx:else class="icon_check" src="/static/images/icon_check.png" ></image>
+                        <view class="font14 C666">司机</view>
+                    </view>
+                </view>
+            </view>
+            <view class="input_box flex flex_center"  bindtap='getStartLocation'>
+                <text class="C666 font15 label">起点</text>
+                <view class='row'>
+                   <image class='location-icon' src='https://e-carpool.oss-cn-beijing.aliyuncs.com/local-icon.png'></image>
+                   <text>{{startPoint ||'获取起点位置'}}</text>
+                </view>
+            </view>
+            <view class="input_box flex flex_center" bindtap='getEndLocation'>
+                <text class="C666 font15 label">终点</text>
+                <view class='row' >
+                   <image class='location-icon' src='https://e-carpool.oss-cn-beijing.aliyuncs.com/local-icon.png'></image>
+                   <text>{{destination ||'获取终点位置'}}</text>
+                </view>
+            </view>
+            <view class="input_box flex flex_center">
+                <text class="C666 font15 label">出发时间</text>
+                <view class='row'>
+                    <view class='start-time-picker'>
+                      <picker mode="date" start="{{dateStartVal}}" end="{{dateEndtVal}}" value='{{departureDate}}' bindchange="bindDateChange">
+                          <view>{{departureDate}}</view>
+                      </picker> 
+                    </view>
+                    <view class='start-time-picker2'>
+                      <picker mode="time" start="00" end="23" value='{{departureTime}}' bindchange="bindTimeChange">
+                        <view>{{departureTime}}</view>
+                      </picker> 
+                    </view>
+                </view>
+            </view>
+            <view class="input_box flex flex_center">
+                <text class="C666 font15 label">{{passengerOrSeatLabel}}</text>
+                <view class='row'>
+                    <form bindsubmit="bindSubNumber" report-submit='true' class='number-selector number-selector-sub'  >
+                      <button form-type="submit"   class='form_button form_button_size'></button> 
+                      -
+                    </form>
+                    <input  name="passengerNum" disabled="true" value='{{passengerNum}}' type="number" class="number-input" />
+                    <form bindsubmit="bindplusNumber" report-submit='true' class='number-selector number-selector-plus'  >
+                      <button form-type="submit"   class='form_button form_button_size'></button> 
+                      +
+                    </form>
+                </view>
+            </view>
+            <view class="single_line flex" hidden='{{!isDriver}}'>
+                <text class="C666 font15 label">途径地</text>
+                <textarea name="byWays" value='{{byWays}}' placeholder='多个途径请用逗号隔开(60个字内)'  placeholder-class="placeholdText"/>
+            </view>
+            <view class="input_box flex flex_center" hidden='{{!isDriver}}'>
+                <text class="C666 font15 label">价格</text>
+                <input type="digit" name="price"  value='{{price || ""}}' placeholder="请输入单价"/>
+                <text class="C666 font15 label">元/人</text>
+            </view>
+             <view class="input_box flex flex_center">
+                <text class="C666 font15 label">捎句话</text>
+                <input type="text" name="bake"  value='{{bake}}' placeholder="给拼友捎句话吧~"/>
+            </view>
+
+        </view>
+
+        <button form-type="submit"   class='submit-btn'>{{isDriver ? '确认发布' : '确认预约'}}</button>
+      
+  </form>
+</view>

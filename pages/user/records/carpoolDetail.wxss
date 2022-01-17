@@ -1,0 +1,48 @@
+@import '/static/css/form.wxss';
+@import "/static/css/ui.wxss";
+@import "/static/css/common.wxss";
+
+ /**位置*/
+ .location-icon{
+    width:11px;
+    height:15px;
+    margin-top:5rpx;
+    margin-right:13rpx;
+ }
+
+.start-time-picker{
+   width: 69%;
+ }
+ .start-time-picker picker{
+   margin:0 auto;
+}
+ .start-time-picker2{
+  margin-left: 19rpx;
+ }
+
+  .start-time-picker2 picker{
+   margin:0 auto;
+}
+
+ .form_button_size{
+    width:10%;
+    height:5%;
+}
+.form_button_size1{
+ width:96%;
+ height:96%;
+}
+.bottom{
+  height: 13rpx;
+}
+.cancleForm{
+  margin-top: 39rpx;
+}
+
+.title{
+  font-size:10pt;
+  margin-left:10px;
+  font-weight: bold;
+  color: #666;
+  margin-top: 10px;
+}

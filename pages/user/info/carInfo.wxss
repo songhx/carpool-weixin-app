@@ -1,0 +1,21 @@
+@import '/static/css/form.wxss';
+
+
+
+.license_prefix{
+   width: 53%;
+}
+
+.license_numbers{
+  margin-left: 30rpx;
+}
+
+.license{
+  flex:1;
+    border: 1px solid #EFEFEF;
+    border-radius: 6rpx;
+    height:51rpx;
+    line-height:51rpx;
+    padding:5rpx 16rpx;
+   
+}

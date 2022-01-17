@@ -1,0 +1,170 @@
+.mainTabCell{
+  background-color: white;
+  margin: 12rpx 12rpx 10rpx 12rpx;
+  /* border: 1rpx solid #dddcdc; */
+}
+
+/*头像*/
+.avator{
+  display: inline-block;
+  vertical-align: middle;
+  width:56rpx;
+  height: 56rpx;
+  margin-left: 14rpx;
+  margin-top: 14rpx;
+  
+}
+.title-time{
+  flex-direction: column;
+  display: inline-block;
+  margin-left: 14rpx;
+  margin-top: 12rpx;
+  vertical-align: middle;
+  padding: 0;
+  color: #454545;
+}
+/*标题*/
+.title{
+  display: block;
+  font-size: 24rpx;
+  margin-bottom: 10rpx;
+}
+.time{
+  display: block;
+  font-size: 9pt;
+}
+.morebtnnormal{
+  width: 49rpx;
+  height: 49rpx;
+  float: right;
+  margin: 3rpx 6rpx;
+}
+
+
+/*内容*/
+.content{
+  margin: 20rpx 14rpx;
+}
+.content-text{
+  display: block;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  margin-bottom: 14rpx;
+  color: #333333;
+}
+.content-multimedia{
+  text-align:center;
+  margin:0 auto;
+  overflow: hidden;
+}
+/*图片*/
+.image-items{
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  padding: 15rpx 10rpx 10rpx;
+  min-height: 136px;
+  overflow: hidden;
+}
+.image-item{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 33.3%;
+  height: 135px;
+  border: 1rpx solid #e5e5e5;
+  border-radius: 5rpx;
+}
+
+.image-item image{
+    width: 100%;
+    height: 100%;
+}
+
+/*视频*/
+.content-multimedia video{
+  display: inline-block;
+  max-width:100%;
+  height: auto;
+  min-width: 70%;
+}
+.content-multimedia audio{
+  display: inline-block;
+  width: 100%;
+}
+
+.video{
+    margin-bottom: 40rpx;
+    position: relative;
+}
+.model-img{
+    width: 100%;
+    height: 420rpx;
+}
+.model-btn{
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    right:0;
+    margin:auto;
+    width:100rpx;
+    height:100rpx;
+    border-radius:50%;
+    background-color: rgba(0,0,0,.3);
+}
+.play-icon{
+    margin:28rpx 42rpx;
+    border-top:26rpx solid transparent;
+    border-left:36rpx solid #fff;
+    border-bottom:22rpx solid transparent;
+}
+
+/*底部工具条*/
+.bottom{
+  height: 85rpx;
+  border-top: 1rpx solid #f8f7f7;
+  overflow: hidden;
+}
+.bottom-item {
+  display: inline-block;
+  width: 25%;
+  height: 100%;
+  vertical-align: text-bottom;
+  text-align: center;
+  overflow: hidden;
+}
+.bottom-item-content{
+  display: inline-block;
+  height: 100%;
+  color: #909090;
+}
+
+.bottom-item-content image{
+  width: 45rpx;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+.bottom-item-content text {
+  font-size: 23rpx;
+  vertical-align: middle;
+  margin-top: 10rpx;
+  display: inline-block;
+}
+
+.cai image{
+  margin-top: 5rpx;
+}
+
+/*分割线*/
+.cut-line{
+  height: 80%;
+  width: 2rpx;
+  background-color: #dddcdc;
+  float: right;
+  margin-top: 5%;
+  margin-right: 3rpx;
+}

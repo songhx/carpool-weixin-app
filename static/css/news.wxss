@@ -1,0 +1,27 @@
+.info-list .single_item{
+    padding:30rpx 30rpx 44rpx;
+    border-bottom:1px solid #E2E2E2;
+}
+.info-list .single_item:last-child{
+    padding:30rpx 30rpx 44rpx;
+    border-bottom:none;
+}
+.info-list .single_item .por{
+    margin-right:20rpx;
+    width:228rpx;
+    height:228rpx;
+    border-radius:10rpx;
+}
+.info-list .single_item .info .title{
+    line-height:50rpx;
+    color:#666;
+}
+.info-list .single_item .info .desc{
+    margin-top:20rpx;
+    margin-bottom:25rpx;
+}
+.icon_eye{
+    width:34rpx;
+    height:22rpx;
+    margin-right:10rpx;
+}

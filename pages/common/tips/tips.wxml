@@ -1,0 +1,20 @@
+<view class='container'>
+
+   <view class='success-t'>
+       <text class='s-tip'>出行提示</text>
+       <view class='s-imgbox'>
+        <image class="s-img" src='/static/images/success-icon.png'></image>
+       </view>
+      
+       <view class='s-content flex flex_center flex_colum'>
+           <text class='t t1'>{{rs || ""}}</text>
+           <text class='t'>{{tip || ""}}</text>
+       </view>
+
+       <view class='btn-t row flex flex_just flex_center'>
+          <view class='btn btn1' bindtap='toIndex'>知道了</view>
+          <view class='btn btn2' bindtap='toOrder'>查看订单</view>
+       </view>
+   </view>
+
+</view>

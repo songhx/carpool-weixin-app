@@ -1,0 +1,124 @@
+<view class="container">
+    <view class="user_box">
+        <view class="user_info bg_ff">
+            <view class="avatar_box flex flex_center">
+                <image class="avatar" src="{{userInfo.avatar}}"></image>
+                <view class="name_box">
+                    <view class="name font16 strong">{{userInfo.nickName}}</view>
+                    <view class="flex">
+                        
+                        <view class="no_real_name flex flex_center flex_just {{userInfo.isRealName==0 ? 'undo' : 'done'}}">
+                            <image  src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/icon_user.png"></image>
+                            <view class="font12 Cfff">{{userInfo.isRealName==0 ? '未实名' : '已实名'}}</view>
+                        </view>
+
+                        <view class="approve_box flex flex_center flex_just {{userInfo.isAuth==0 ? 'undo' : 'done'}}">
+                            <image class="icon_approve" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/icon_approve.png"></image>
+                            <view class="font12 Cfff">{{userInfo.isAuth==0 ? '未认证' : '已认证'}}</view>
+                        </view>
+                        
+                    </view>
+                </view>
+            </view>
+            <view class="flex flex_around" style="margin-top:50rpx;">
+                <view class="carpool_number flex flex_colum flex_just flex_center">
+                    <view class="C666 font16 strong mb13">{{carpoolTimes}}</view>
+                    <view class="flex flex_center">
+                        <image class="icon_car" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/icon_car.png"></image>
+                        <view class="C666 font12">出行次数</view>
+                    </view>
+                </view>
+                <view class="passengers_number flex flex_colum flex_just flex_center">
+                    <view class="C666 font16 strong mb13">{{seatingTimes}}</view>
+                    <view class="flex flex_center">
+                        <image class="icon_passengers" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/icon_passengers.png"></image>
+                        <view class="C666 font12">载客次数</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!--列表开始-->
+    <view>
+        <view class="list_box  bg_ff">
+           <form bindsubmit="navTo" report-submit='true'>
+              <input hidden='true' name="skip"  value="/pages/user/records/carpoolRecord"></input> 
+              <button form-type="submit"   class='form_button'></button> 
+              <view class="list_item  flex flex_center flex_between">
+                  <view class="flex flex_center">
+                      <image class="icon_mine01 mr20" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/mine01.png"></image>
+                      <text class="font15 C666">我的发布</text>
+                  </view>
+                  <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/icon_go.png" class="icon_go"></image>
+              </view>
+          </form>
+          <form bindsubmit="navTo" report-submit='true'>
+              <input hidden='true' name="skip"  value="/pages/user/orders/orders"></input> 
+              <button form-type="submit"   class='form_button'></button> 
+              <view class="list_item  flex flex_center flex_between no_border">
+                  <view class="flex flex_center">
+                      <image class="icon_mine02 mr20" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/mine02.png"></image>
+                      <text class="font15 C666">我的出行</text>
+                  </view>
+                  <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/icon_go.png" class="icon_go"></image>
+              </view>
+          </form>
+        </view>
+        <view class="list_box  bg_ff">
+           <form bindsubmit="navTo" report-submit='true'>
+                <input hidden='true' name="skip"  value="/pages/user/info/info"></input> 
+                <button form-type="submit"   class='form_button'></button> 
+                <view class="list_item  flex flex_center flex_between">
+                    <view class="flex flex_center">
+                        <image class="icon_mine03 mr20" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/mine03.png"></image>
+                        <text class="font15 C666">实名认证</text>
+                    </view>
+                    <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/icon_go.png" class="icon_go"></image>
+                </view>
+            </form>
+            <form bindsubmit="navTo" report-submit='true'>
+                <input hidden='true' name="skip"  value="/pages/user/info/carInfo"></input> 
+                <button form-type="submit"   class='form_button'></button>
+                <view class="list_item  flex flex_center flex_between">
+                    <view class="flex flex_center">
+                        <image class="icon_mine04 mr20" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/mine04.png"></image>
+                        <text class="font15 C666">车主认证</text>
+                    </view>
+                    <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/icon_go.png" class="icon_go"></image>
+                </view>
+            </form>
+
+            <form bindsubmit="navTo" report-submit='true'>
+                <input hidden='true' name="skip"  value="/pages/user/guide/guide"></input> 
+                <button form-type="submit"   class='form_button'></button>
+                <view class="list_item  flex flex_center flex_between no_border">
+                    <view class="flex flex_center">
+                        <image class="icon_mine05 mr20" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/mine05.png"></image>
+                        <text class="font15 C666">用户指南</text>
+                    </view>
+                    <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/icon_go.png" class="icon_go"></image>
+                </view>
+            </form>
+
+        </view>
+
+        <view class="list_box  bg_ff">
+           <form bindsubmit="navTo" report-submit='true'>
+                <input hidden='true' name="skip"  value="/pages/user/feedback/feedback"></input> 
+                <button form-type="submit"   class='form_button'></button>
+                <view class="list_item  flex flex_center flex_between no_border">
+                    <view class="flex flex_center">
+                        <image class="icon_mine06 mr20" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/mine06.png"></image>
+                        <text class="font15 C666">意见反馈</text>
+                    </view>
+                    <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/icon_go.png" class="icon_go"></image>
+                </view>
+            </form>
+        </view>
+    </view>
+
+    <view class="carpool_image">
+        <image class="icon_carpool" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/ad/icon_carpool.png"></image>
+    </view>
+</view>

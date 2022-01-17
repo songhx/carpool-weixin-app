@@ -1,0 +1,43 @@
+
+/**公用ui组件*/
+.number-input {
+    float: left;
+    width: 39px;
+    height: 23px;
+    font-size: 16px;
+    color: #666;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #ececec;
+    padding: 0px 0px 6px 0px;
+    text-align: center;
+    border-radius: 1px;
+    min-height: inherit;
+}
+.number-selector {
+    float: left;
+    height: 23px;
+    font-size: 25px;
+    line-height: 18px;
+    color: #04BE02;
+    border: 1px solid #ececec;
+}
+
+.number-selector.wux-number-disabled {
+    color: #ccc;
+}
+.number-selector-sub {
+    border-right: none;
+    padding:3px 11px;
+    border-radius: 2px 0 0 2px;
+    text-align:center;
+}
+
+.number-selector-plus {
+    border-left: none;
+    margin-right: 5px;
+    padding:3px 11px;
+    border-radius: 0 2px 2px 0;
+    text-align:center;
+}

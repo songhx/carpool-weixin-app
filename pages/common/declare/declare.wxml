@@ -1,0 +1,58 @@
+
+<!--pages/caruser/caruser.wxml-->
+<view class="content">
+  <view  class="content-box"> 
+    <view class="title">
+    【温馨提示】
+    </view>
+    <view class="viewinfo" >
+    1、请网友在登录本平台前事先仔细阅读本声明，一旦确认并成功登录，即被视为本平台用户并对本声明全部内容认可与接受。
+    </view>
+    <view class="viewinfo" >
+    2、禁止任何人在本平台发布政治性的、反动、色情、违反法律法规的不良信息。
+    </view>
+    <view class="viewinfo" >
+     3、请不要在本平台发布与拼(搭)车无关的信息。
+    </view>
+    <view class="title">
+    【免责声明】
+    </view>
+    <view class="viewinfo" >
+    1、在拼（搭）车的过程中，无论是司机或是乘客，都要注意人身安全。在正式拼（搭）车前，各自需要对另一方的情况进行辨别与判断。
+    </view>
+    <view class="viewinfo" >
+    2、本平台用户可在本平台发布出行信息，出行信息包括但不限于司机发布需求，乘客发布约车需求，乘客预约需求等。本平台不对信息的真实性与否负责审核，也不为任何人提供任何形式的安全担保，一旦在出行过程中发生侵犯人身安全等意外伤害事件，请及时拨打110寻求帮助保障自我权益。{{appName}}平台不承担任何责任。
+    </view>
+    <view class="viewinfo" >
+    3、本平台保留下述权利包括但不限于：随时修改、删除在本平台发布的任何信息；随时停止本平台提供的服务；公安司法部门在对本平台上出现的不良信息进行调查时，向相关部门提供信息发布者的相关信息。
+    </view>
+    <view class="viewinfo" >
+    4、用户明确理解和同意，请您在使用本平台信息进行出行时，自行甄别信息真伪，本平台不承担任何因使用本平台信息进行出行时发生的法律责任，如果您确认使用了本平台的出行信息，将被视为您在清醒理智的前提下，详细阅读并默认了以上免责说明。
+    </view>
+    <view class="title">
+    【乘客须知】
+    </view>
+    <view class="viewinfo" >
+    具有独立承担民事责任能力的合法公民。
+    </view>
+    <view class="title" >
+    【司机须知】
+    </view>
+    <view class="viewinfo" >
+    1、具有独立承担民事责任能力的合法公民。
+    </view>
+    <view class="viewinfo" >
+    2、已合法取得中华人民共和国机动车驾驶证，准驾车型为 C2及以上。
+    </view>
+    <view class="viewinfo" >
+    3、确保所驾驶车辆安全合法无纠纷。
+    </view>
+  </view>
+</view>
+<view  style="height:140px;">
+    <form   bindsubmit="formSubmit" bindreset="formReset" report-submit="true">
+      <view class="btn-area">
+          <button form-type="submit"   class='subscribe-sub'>我已仔细阅读并同意</button>
+      </view>
+    </form>
+ </view> 

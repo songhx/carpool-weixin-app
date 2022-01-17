@@ -1,0 +1,90 @@
+<template name="mainTabCell">
+
+    <view class="mainTabCell">
+        <!--顶部-->
+        <view class="top">
+        
+            <!--头像-->
+            <image class="avator" src="{{item.avatar}}" mode="aspectFit"></image>
+
+            <!--标题、时间-->
+            <view class="title-time">
+                <text class="title">{{item.name}}</text>
+                <text class="time">{{item.createTime}}</text>
+            </view>
+            
+            <!--更多按钮-->
+            <image hidden='{{item.isDetail !=null }}' class="morebtnnormal" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/morebtnnormal.png" mode="center" ></image>
+            
+        </view>
+            
+        <!--内容-->
+        <view class="content">
+
+            <text class="content-text">{{item.content}}</text>
+
+            <!--大图-->
+       <view class='image-items' wx:if="{{item.imageList != null && item.imageList.length > 0 }}">
+        <view class="image-item"  wx:for="{{item.imageList}}" wx:key="key"  wx:for-item="img">
+            <image src="{{img}}" catchtap='preImg' data-list="{{item.imageList}}" data-src="{{img}}"></image>
+          </view>
+       </view>
+        
+
+            <!--视频-->
+            <view class="content-multimedia" hidden="{{item.videoUrl ? false : true}}">
+                <video id="{{item.id}}" src="{{item.videoUrl}}" bindplay="videoPlay" bindended="videoEndPlay" catchtap="tapVideo" controls style="width: 345px;height: calc(9 * 750rpx / 16);" ></video>
+            </view>
+
+            <!--音频-->
+            <view class="content-multimedia" hidden="{{item.voiceUrl ? false : true}}">
+                <audio id="{{item.id}}" src="{{item.voiceUrl}}" poster="{{item.bimgUrl}}" author="{{item.author}}" bindplay="audioplay" bindended="audioEndPlay" controls></audio>
+            </view>
+            
+        </view>
+            
+        <!--底部-->
+        <view class="bottom" hidden='{{item.isDetail !=null }}'>
+
+            <!--赞-->
+            <view class="bottom-item" data-id='{{item.id}}' catchtap="zanEvent">
+                <view class="bottom-item-content">
+                <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/mainCellDing.png" mode="center"></image>
+                <text class="bottom-item-zan-text">{{item.agreeNum}}</text>
+                </view>
+                <!--分割线-->
+                <view class="cut-line"></view>
+            </view>
+
+            <!--踩-->
+            <view class="bottom-item" data-id='{{item.id}}' catchtap="dissEvent">
+                <view class="bottom-item-content cai">
+                <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/mainCellCai.png" mode="center"></image>
+                <text class="bottom-item-zan-text">{{item.dissNum}}</text>
+                </view>
+                <!--分割线-->
+                <view class="cut-line"></view>
+            </view>
+
+            <!--转发-->
+            <view class="bottom-item" data-id='{{item.id}}' catchtap='repostEvent'>
+                <view class="bottom-item-content">
+                <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/mainCellShare.png" mode="center"></image>
+                <text class="bottom-item-zan-text">{{item.repostNum}}</text>
+                </view>
+                <!--分割线-->
+                <view class="cut-line"></view>
+            </view>
+
+            <!--评论-->
+            <view class="bottom-item">
+                <view class="bottom-item-content">
+                <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/mainCellComment.png" mode="center"></image>
+                <text class="bottom-item-zan-text">{{item.commentNum}}</text>
+                </view>
+            </view>
+
+        </view>
+    </view>
+    
+</template>

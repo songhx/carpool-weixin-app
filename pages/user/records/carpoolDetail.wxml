@@ -1,0 +1,132 @@
+<view class="container">
+
+    <!--tabs开始-->
+    <view class="tabs bg_ff flex flex_center flex_around font16" style="margin-bottom: 16rpx;">
+        <view bindtap='swithchTab' class="{{tabIndex == 0 ? 'active' : ''}}" data-id='0'>拼车详情</view>
+        <view bindtap='swithchTab' class="{{tabIndex == 1 ? 'active' : ''}}" data-id='1'>预约信息</view>
+    </view>
+
+  <form wx:if="{{tabIndex == 0}}" bindsubmit="updateTrip" report-submit='true' >
+        <view class="info_box bg_ff">
+             <view class="input_box flex flex_center">
+                <text class="C666 font15 label">拼车类型</text>
+                <picker bindchange="lisentCarpoolTypeChanges" value="{{carpoolTypeList[carpoolTypeIndex]}}" range="{{carpoolTypeList}}" >
+                      <view class="picker flex flex_between flex_center">
+                        <view>{{carpoolTypeList[carpoolTypeIndex]}}</view>
+                        <image src='https://e-carpool.oss-cn-beijing.aliyuncs.com/down.png'  class='com-sImg'></image>
+                      </view>
+                  </picker>
+            </view>
+            <view class="input_box flex flex_center">
+                <text class="C666 font15 label">起点</text>
+                <view class='row' bindtap='getStartLocation'>
+                   <image class='location-icon' src='https://e-carpool.oss-cn-beijing.aliyuncs.com/local-icon.png'></image>
+                   <text>{{startPoint ||'获取起点位置'}}</text>
+                </view>
+            </view>
+            <view class="input_box flex flex_center">
+                <text class="C666 font15 label">终点</text>
+                <view class='row' bindtap='getEndLocation'>
+                   <image class='location-icon' src='https://e-carpool.oss-cn-beijing.aliyuncs.com/local-icon.png'></image>
+                   <text>{{destination ||'获取终点位置'}}</text>
+                </view>
+            </view>
+            <view class="input_box flex flex_center">
+                <text class="C666 font15 label">出发时间</text>
+                <view class='row'>
+                    <view class='start-time-picker'>
+                      <picker mode="date" start="{{dateStartVal}}" end="{{dateEndtVal}}" value='{{departureDate}}' bindchange="bindDateChange">
+                          <view>{{departureDate}}</view>
+                      </picker> 
+                    </view>
+                    <view class='start-time-picker2'>
+                      <picker mode="time" start="00" end="23" value='{{departureTime}}' bindchange="bindTimeChange">
+                        <view>{{departureTime}}</view>
+                      </picker> 
+                    </view>
+                </view>
+            </view>
+            <view class="input_box flex flex_center">
+                <text class="C666 font15 label">{{carpoolPublish.userType == 1 ? '剩余座位' : '乘客人数'}}</text>
+                <view class='row'>
+                    <form bindsubmit="bindSubNumber" report-submit='true' class='number-selector number-selector-sub'  >
+                      <button form-type="submit"   class='form_button form_button_size'></button> 
+                      -
+                    </form>
+                    <input  name="passengerNum" disabled="true" value='{{carpoolPublish.passengerNum}}' type="number" class="number-input" />
+                    <form bindsubmit="bindplusNumber" report-submit='true' class='number-selector number-selector-plus'  >
+                      <button form-type="submit"   class='form_button form_button_size'></button> 
+                      +
+                    </form>
+                </view>
+            </view>
+            <view class="single_line flex" wx:if="{{carpoolPublish.userType == 1}}">
+                <text class="C666 font15 label">途径地</text>
+                <textarea name="byWays" value='{{carpoolPublish.byWays}}' placeholder='多个途径请用逗号隔开(60个字内)'  placeholder-class="placeholdText"/>
+            </view>
+            <view class="input_box flex flex_center" wx:if="{{carpoolPublish.userType == 1}}">
+                <text class="C666 font15 label">价格</text>
+                <input type="digit" name="price"  value='{{carpoolPublish.price || ""}}' placeholder="请输入拼车单价"/>
+                <text class="C666 font15 label">元/人</text>
+            </view>
+             <view class="input_box flex flex_center">
+                <text class="C666 font15 label">捎句话</text>
+                <input type="text" name="bake"  value='{{carpoolPublish.bake}}' placeholder="给拼友捎句话吧~"/>
+            </view>
+
+            <button wx:if="{{carpoolPublish.status==0}}" form-type="submit"   class='submit-btn'>修改行程</button>
+            <view class='bottom'></view>
+        </view>
+
+        
+      
+  </form>
+
+
+  <form class='cancleForm' bindsubmit="cancelCarPoolPublish" report-submit='true' wx:if="{{tabIndex == 0 && carpoolPublish.status==0}}" >
+        <view class="info_box bg_ff">
+            <view class="single_line flex" style='border:none;'>
+                <text class="C666 font15 label">取消原因</text>
+                <textarea name="cancelReason" placeholder='请输入取消原因'  placeholder-class="placeholdText"/>
+            </view>
+            <button form-type="submit"   class='submit-btn'>取消行程</button>
+            <view class='bottom'></view>
+        </view>
+  </form>
+
+
+  <form  bindsubmit="relPublish" report-submit='true' wx:if="{{tabIndex == 0 && carpoolPublish.status!=0 && carpoolPublish.status!=4}}" >
+        <button  form-type="submit"   class='submit-btn'>再次发布</button>
+  </form>
+
+  <view wx:if="{{tabIndex == 1}}" class='box' >
+      <view class='record-content' wx:for="{{orderList}}" wx:key="{{key}}">
+        <form bindsubmit="navTo" report-submit='true' class='record-box'>
+          <input hidden='true' name="skip"  value="/pages/user/orders/detail?id={{item.id}}&publishId={{publishId}}&formType=0"></input> 
+          <button form-type="submit"   class='form_button form_button_size1'></button> 
+          <view>
+            <view class="carp-row carp-row1"></view>
+            <text class='carp-row1-text'>{{item.departureTime}}</text>
+          </view>
+          <view>
+            <view  class="carp-row carp-row2"></view>
+            <text class='carp-row2-text'>{{item.startPoint}}</text>
+          </view>
+          <view>
+            <view  class="carp-row carp-row3"></view>
+            <text class='carp-row2-text'>{{item.destination}}</text>
+          </view>
+      </form>
+        <view class='record-status'>
+            <text >{{item.status}}</text>
+        </view>
+      </view>
+   </view>
+
+</view>
+
+
+<view bindtap='toIndex' class="fixed_right flex flex_center flex_just flex_colum">
+  <image src="/static/images/icon_home.png"></image>
+  <view>回到首页</view>
+</view>

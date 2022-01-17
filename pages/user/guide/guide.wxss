@@ -1,0 +1,24 @@
+.content-box {
+  padding-top:6px;
+  padding-bottom:30px;
+
+}
+.content {
+  height: 100%;
+}
+.title{
+  margin-left:10px;
+  margin-right:10px;
+  font-weight: bold;
+  color: #666;
+  line-height: 39px;
+  font-size:11pt;
+}
+.viewinfo{
+  margin-left:15px;
+  margin-right:10px;
+  font-size:11pt;
+  color:#999;
+  line-height:20px;
+
+}

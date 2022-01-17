@@ -1,0 +1,37 @@
+<view class="header" hidden="{{hideHeader}}">
+  <view>下拉刷新中……</view>
+  <view>{{refreshTime}}</view>
+</view>
+<view class="container">
+
+<!--车友资讯开始-->
+    <scroll-view scroll-x="true" class='info-list bg_ff'>
+        <block wx:for="{{articleList}}" wx:key="{{item.id}}">
+         <navigator url='/pages/news/details?id={{item.id}}'>
+              <view class="single_item flex flex_center">
+                    <image class="por" src="{{item.url}}"></image>
+                    <view class="info flex_1">
+                        <view class="title font16 C333">{{item.title}}</view>
+                        <view class="C999 font14 desc">{{item.resume}}</view>
+                        <view class="flex flex_between">
+                            <view class="flex flex_center">
+                                <image class="icon_eye" 
+                                      src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/icon_eye.png"></image>
+                                <view class="font14 C999">{{item.viewNum}}</view>
+                            </view>
+                            <view class="font14 C999">{{item.publishTime}}</view>
+                        </view>
+                    </view>
+                </view>
+         </navigator>
+          
+        </block>
+    </scroll-view>
+    <!--车友资讯结束-->
+
+</view>
+
+ <view class="bottom" hidden="{{hideBottom}}">
+  <view>{{loadMoreData}}</view>
+  <view>{{refreshTime}}</view>
+</view>

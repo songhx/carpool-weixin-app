@@ -1,0 +1,146 @@
+<view class="container">
+        <!-- 地图开始 -->
+        <view wx:if="{{showMap}}" class='map_box'>
+             <map id="navi_map" longitude="{{startPointLongitude}}" latitude="{{startPointLatitude}}" scale="12" markers="{{markers}}" polyline="{{polyline}}"></map>
+        </view>
+        <view bindtap='toggleMaps' class="flex center flex_center bg_ff">
+           <image bindtap='toggle' class='toggle' src='https://e-carpool.oss-cn-beijing.aliyuncs.com/toggle.png'></image>
+        </view>
+        <!-- 详细信息开始 -->
+        <view class="single_item ">
+            <view class="flex flex_between flex_center name_box  bg_ff" >
+                <view class="left_part flex flex_center">
+                    <image src="{{carpoolPublish.avatar}}"></image>
+                    <view class="font16 strong">{{carpoolPublish.userName}}</view>
+                </view>
+                <view class="state flex flex_colum flex_center">
+                    <view wx:if="{{carpoolPublish.plateNumberPrefix != null}}" class="carPlate">{{carpoolPublish.plateNumberPrefix || ""}}{{carpoolPublish.plateNumber || ""}}</view>
+                    <view wx:if="{{carpoolPublish.userType == 1}}" class="C666 mt6">{{carpoolPublish.carBrand}}, {{carpoolPublish.carColor}},{{carpoolPublish.carType}}</view>
+                </view>
+            </view>
+            
+            <view class="process_box bg_ff">
+                <view class="process">
+                    <view class="flex flex_between mb30">
+                        <view class="part_one flex">
+                            <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_01.png"></image>
+                            <view class="font15 flex_1 line42">{{carpoolPublish.departureTime}}</view>
+                        </view>
+                        <view class="font15 C666">{{userType == 1 ? '余' : '需'}}<text class="C655E">{{carpoolPublish.passengerNum || "0"}}</text>座</view>
+                    </view>
+                    <view class="part_one flex mb30">
+                        <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_02.png"></image>
+                        <view class="font15 flex_1 line42">{{carpoolPublish.startPoint}}</view>
+                    </view>
+                    <view wx:if="{{carpoolPublish.userType == 1}}" class="part_one flex  mb30">
+                        <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_03.png"></image>
+                        <view class="font15 flex_1 line42 process_city ">
+                          {{carpoolPublish.isFold ? carpoolPublish.byWaysOmit : carpoolPublish.byWays }}
+                        </view>
+                        <image class="icon_more"  src="https://e-carpool.oss-cn-beijing.aliyuncs.com/{{carpoolPublish.isFold ? 'icon_more' : 'icon_less' }}.png" catchtap="toggle"></image>
+                    </view>
+                    <view class="part_one flex">
+                        <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_04.png"></image>
+                        <view class="font15 flex_1 line42">{{carpoolPublish.destination}}</view>
+                    </view>
+                    <view class="price_box" wx:if="{{carpoolPublish.userType == 1}}">
+                        <view class="font16">￥{{carpoolPublish.price || ""}}元/人</view>
+                    </view>
+                    <view class="bake_box">
+                        <view class="font15 C8811">{{carpoolPublish.userType == 1 ? '车主留言:' : '拼客留言:'}} {{carpoolPublish.bake || ''}}</view>
+                    </view>
+                     
+                </view>
+            </view>
+            <view class="connect_box">
+                    <view class="connect_type flex flex_center flex_end bg_ff">
+                        <view bindtap='callPhone' data-mobile='{{carpoolPublish.mobile}}'>电话咨询</view>
+                        <view bindtap='copyWxCode'>微信联系</view>
+                        <view wx:if="{{carpoolPublish.userType == 1 }}" bindtap='openOrder'>预定座位</view>
+                        <view wx:if="{{carpoolPublish.userType == 0 && userInfo.isAuth == 1 }}" bindtap='subOrder'>我要抢单</view>
+                    </view>
+            </view>
+             
+        </view>
+</view>
+
+
+ <!--复制微信号码-->
+    <view class="mask"  wx:if="{{showModal1}}">
+        <view class="float_box">
+            <image src="/static/images/bindSuccess.png"></image>
+            <view class="tip">
+                <view class="C8181 font16" style="text-align:center;margin-bottom:15rpx;">温馨提示</view>
+                <view class="C860 font15">{{modalTitle}}</view>
+            </view>
+            <view class="sure_btn" bindtap="closeFloat">确认</view>
+        </view>
+    </view>
+
+
+
+<!--自定义弹框组件对应的遮罩层-->
+<view class='mask' wx:if="{{showModal}}" bindtap="closeModal" catchtouchmove="return">
+</view>
+<!--自定义弹框组件-->
+<modal show="{{showModal}}" height='80%' bind:confirm='modalConfirm' catchtouchmove="return">
+    <view class="title flex flex_just flex_center" slot="slot1">
+        <view>预定</view>
+    </view>
+    <view class='modal-content' slot="slot2">
+        <view class="order_content bg_ff">
+            <view class="position_box flex flex_center">
+                <view class="part_one flex_1">
+                    <view class="flex flex_center item_line" bindtap='getStartLocation'>
+                        <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_02.png"></image>
+                        <input class="font14 C666" placeholder="实际上车位置" value="{{startPoint ||''}}"/>
+                    </view>
+                    <view class="flex flex_center item_line" bindtap='getEndLocation'>
+                        <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_04.png"></image>
+                        <input class="font14 C666" placeholder="实际下车位置" value="{{destination ||''}}"/>
+                    </view>
+                </view>
+                
+            </view>
+            <view class="position_box"> 
+               <view class="input_box flex flex_center">
+                    <text class="C666 font15 label">乘车人数</text>
+                    <view class='row'>
+                        <form bindsubmit="bindSubNumber" report-submit='true' class='number-selector number-selector-sub'  >
+                          <button form-type="submit"   class='form_button form_button_size'></button> 
+                          -
+                        </form>
+                        <input  name="passengerNum" disabled="true" value='{{passengerNum}}' type="number" class="number-input" />
+                        <form bindsubmit="bindplusNumber" report-submit='true' class='number-selector number-selector-plus'  >
+                          <button form-type="submit"   class='form_button form_button_size'></button> 
+                          +
+                        </form>
+                    </view>
+                </view>
+                <view class="select_time flex flex_center">
+                    <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_01.png"></image>
+                    <text class="C666 font15 label">出发时间</text>
+                  <view class='row'>
+                        <view class='start-time-picker'>
+                          <picker mode="date" start="{{dateStartVal}}" end="{{dateEndtVal}}" value='{{departureDate}}' bindchange="bindDateChange">
+                              <view>{{departureDate}}</view>
+                          </picker> 
+                        </view>
+                        <view class='start-time-picker2'>
+                          <picker mode="time" start="00" end="23" value='{{departureTime}}' bindchange="bindTimeChange">
+                            <view>{{departureTime}}</view>
+                          </picker> 
+                        </view>
+                    </view>
+                </view>
+            </view>
+             
+            
+        </view>
+    </view>
+</modal>
+
+<view bindtap='toIndex' class="fixed_right flex flex_center flex_just flex_colum">
+    <image src="/static/images/icon_home.png"></image>
+    <view>回到首页</view>
+</view>

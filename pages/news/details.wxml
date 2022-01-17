@@ -1,0 +1,36 @@
+<view class="container">
+    <!-- 顶部图片开始 -->
+    <view class="header">
+      <image class="preview_img" src="{{article.url}}"></image>
+    </view>
+    <!-- 顶部图片结束 -->
+
+   <view class='detail'>
+      <!-- 文章标题开始 -->
+      <view class='article-title'>
+          {{article.title}}
+      </view>
+      <!-- 文章标题结束 -->
+
+      <!-- 文章发布信息开始 -->
+      <view class='info'>
+        <view class='publisher'>
+            作者:{{article.author}}     
+        </view>
+        <view class='publish_time'>
+            发布时间：{{article.publishTime}}
+        </view>
+      </view>
+    
+   </view>
+   
+  
+      <!-- 文章内容开始 -->
+    <view class="con C666">
+        <import src="../../lib/wxParse/wxParse.wxml"/>
+        <template is="wxParse" data="{{wxParseData:detailContent.nodes}}"/>
+    </view>
+  <!-- 文章内容结束 -->
+
+</view>
+ 

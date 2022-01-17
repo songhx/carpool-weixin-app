@@ -1,0 +1,106 @@
+<view class="container">
+        <!-- 详细信息开始 -->
+        <view class="single_item ">
+            <view class="flex flex_between flex_center name_box  bg_ff" >
+                <view class="left_part flex flex_center">
+                    <image src="{{orderInfo.orderUserAvatar}}"></image>
+                    <view class="font16 strong">{{orderInfo.orderUserName}}</view>
+                </view>
+                <view class="state flex flex_colum flex_center">
+                    <view  wx:if="{{orderInfo.userType == 1}}"class="carPlate">{{orderInfo.plateNumberPrefix || ""}}{{orderInfo.plateNumber || ""}}</view>
+                    <view wx:if="{{orderInfo.userType == 1}}" class="C666 mt6">{{orderInfo.carBrand}}, {{orderInfo.carColor}},{{orderInfo.carType}}</view>
+                </view>
+            </view>
+            
+            <view class="process_box bg_ff">
+                <view class="process">
+                    <view class="flex flex_between mb30">
+                        <view class="part_one flex">
+                            <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_01.png"></image>
+                            <view class="font15 flex_1 line42">{{orderInfo.departureTime}}</view>
+                        </view>
+                        <view class="font15 C666">{{orderInfo.userType == 1 ? '余' : '需'}}<text class="C655E">{{orderInfo.passengerNum || "0"}}</text>座</view>
+                    </view>
+                    <view class="part_one flex mb30">
+                        <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_02.png"></image>
+                        <view class="font15 flex_1 line42">{{orderInfo.startPoint}}</view>
+                    </view>
+                    <view wx:if="{{carpoolPublish.userType == 1}}" class="part_one flex  mb30">
+                        <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_03.png"></image>
+                        <view class="font15 flex_1 line42 process_city ">
+                          {{orderInfo.isFold ? orderInfo.byWaysOmit : orderInfo.byWays }}
+                        </view>
+                        <image class="icon_more"  src="https://e-carpool.oss-cn-beijing.aliyuncs.com/{{orderInfo.isFold ? 'icon_more' : 'icon_less' }}.png" catchtap="toggle"></image>
+                    </view>
+                    <view class="part_one flex">
+                        <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_04.png"></image>
+                        <view class="font15 flex_1 line42">{{orderInfo.destination}}</view>
+                    </view>
+                    <view class="price_box" wx:if="{{carpoolPublish.userType == 1}}">
+                        <view class="font16">￥{{orderInfo.price || ""}}元/位</view>
+                    </view>
+                    <view wx:if='{{orderInfo.orderBake != null && orderInfo.orderBake != ""}}' class="bake_box">
+                        <view class="font15 C8811">{{orderInfo.userType == 1 ? '车主留言:' : '拼客留言:'}} {{orderInfo.orderBake || ''}}</view>
+                    </view>
+                    <view wx:if="{{orderInfo.refuseReason != null}}" class="bake_box">
+                        <view class="font15 C8811">拒绝原因: {{orderInfo.refuseReason || ''}}</view>
+                    </view>
+                    <view wx:if="{{orderInfo.cancelReason != null}}" class="bake_box">
+                        <view class="font15 C8811">取消原因: {{orderInfo.cancelReason || ''}}</view>
+                    </view>
+                     
+                </view>
+            </view>
+
+            <form class='cancleForm' bindsubmit="cancelOrder" report-submit='true' wx:if="{{formType == 1 && (orderInfo.status==0 || orderInfo.status==1) }}" >
+                <view class="info_box bg_ff">
+                    <view class="single_line flex" style='border:none;'>
+                        <text class="C666 font15 label">取消原因</text>
+                        <textarea name="cancelReason" placeholder='请输入取消原因'  placeholder-class="placeholdText"/>
+                    </view>
+                    <button form-type="submit"   class='submit-btn'>取消预约</button>
+                    <view class='bottom'></view>
+                </view>
+            </form>
+
+            <form class='cancleForm' bindsubmit="refuseOrder" report-submit='true' wx:if="{{formType == 0 && (orderInfo.status==0 || orderInfo.status==1) }}" >
+                <view class="info_box bg_ff">
+                    <view class="single_line flex" style='border:none;'>
+                        <text class="C666 font15 label">拒绝原因</text>
+                        <textarea name="refuseReason" placeholder='请输入拒绝原因'  placeholder-class="placeholdText"/>
+                    </view>
+                    <button form-type="submit"   class='submit-btn'>拒绝</button>
+                    <view class='bottom'></view>
+                </view>
+            </form>
+
+            <view class="connect_box">
+                    <view class="connect_type flex flex_center flex_end bg_ff">
+                        <view bindtap='callPhone' data-mobile='{{orderInfo.mobile}}'>电话咨询</view>
+                        <view bindtap='copyWxCode'>微信联系</view>
+                        <form bindsubmit="confirmOrder" report-submit='true' >
+                          <button wx:if="{{formType == 0 && (orderInfo.status==0) }}" form-type="submit"  class='sub-order'>同意</button>
+                        </form>
+                    </view>
+            </view>
+             
+        </view>
+</view>
+
+
+ <!--复制微信号码-->
+    <view class="mask"  wx:if="{{showModal1}}">
+        <view class="float_box">
+            <image src="/static/images/bindSuccess.png"></image>
+            <view class="tip">
+                <view class="C8181 font16" style="text-align:center;margin-bottom:15rpx;">温馨提示</view>
+                <view class="C860 font15">{{modalTitle}}</view>
+            </view>
+            <view class="sure_btn" bindtap="closeFloat">确认</view>
+        </view>
+    </view>
+
+<view bindtap='toIndex' class="fixed_right flex flex_center flex_just flex_colum">
+  <image src="/static/images/icon_home.png"></image>
+  <view>回到首页</view>
+</view>

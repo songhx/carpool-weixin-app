@@ -1,0 +1,52 @@
+@import "mainTabCell.wxss";
+@import "commentCell.wxss";
+Page{
+    background-color: white;
+}
+.scrollview{
+    height: 100%;
+}
+/*分隔线*/
+.divide_view{
+    height: 20rpx;
+    background-color: #f2f2f2;
+}
+.comment_text{
+    display:block;
+    height:68rpx;
+    font-size:26rpx;
+    color:#888888;
+    line-height:68rpx;
+    margin-left: 15rpx;
+}
+
+
+.comment-box{
+  position: fixed;
+  width: 100%;
+  bottom: 0; 
+  height: 99rpx;
+  background: #f4f4f4;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.comment-input{
+  height: 48rpx;
+  width: 600rpx;
+  border:1px solid #ddd;
+  border-radius:25rpx;
+  background: #fff;
+  margin-left: 20rpx;
+  font-size: 10pt;
+	padding-left:10px;
+}
+.icon{
+  width:32px;
+  height:30px;
+  margin-right:23rpx;
+}
+.hide{
+  display: none;
+}

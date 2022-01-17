@@ -1,0 +1,233 @@
+/* pages/riderscircle/riderscircle.wxss */
+@import "/static/css/common.wxss";
+.header {
+  width: 100%;
+  height: 300rpx;
+  padding: 33rpx;
+  background-image: url("https://e-carpool.oss-cn-beijing.aliyuncs.com/arounds/header_bg.png");
+  background-size: contain;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.limit {
+  float: left;
+}
+
+.limit .tips {
+  font-size: 30rpx;
+}
+
+.limit_no {
+  background-color:#1e56a9;
+  border-radius:8rpx;
+  padding:0 9rpx 0 0;
+  color:#FFF;
+  margin-left:13rpx;
+  font-size:10pt;
+
+}
+
+.tips {
+  color: #fff;
+  font-weight: 700;
+}
+
+.weather {
+  float: right;
+  position: relative;
+}
+
+.weather image {
+  width: 70rpx;
+  height: 48rpx;
+  margin-right: 10rpx;
+}
+
+.weather text {
+  color: #fff;
+  font-size: 36rpx;
+  height: 48rpx;
+  display: block;
+  float: right;
+}
+
+text.wash-car {
+  font-size: 24rpx;
+  position: absolute;
+  right: 0;
+  top: 48rpx;
+}
+
+
+
+swiper {
+  width: 100%;
+  height: 200rpx;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+}
+
+.section {
+  background-color: #fff;
+  margin-top: 20rpx;
+  padding: 0 30rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 25%;
+  height: 140rpx;
+  padding-top: 20rpx;
+}
+
+.item image {
+  display: block;
+  width: 80rpx;
+  height: 80rpx;
+  margin: 0 auto;
+}
+
+.item text {
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+}
+
+.car {
+  margin-top: 20rpx;
+  background-color: #fff;
+  width: 100%;
+  padding: 20rpx 0 0;
+}
+
+.car .title {
+  border-left: 6rpx solid #FF8811;
+  padding-left: 10rpx;
+  margin-left: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 26rpx;
+}
+
+.nearby {
+  width: 100%;
+  display: flex;
+}
+
+.nearby-service {
+  flex: 1;
+  width: 20%;
+  padding-bottom: 20rpx;
+}
+
+.icon-item {
+  width: 80rpx;
+  height: 80rpx;
+  margin: 0 auto 20rpx;
+  position: relative;
+}
+
+.icon-item image {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nearby-service text {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.service {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.new-car, .car-2nd {
+  display: flex;
+  width: 50%;
+  height: 150rpx;
+  border: 1px solid #eee;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.new-car image, .car-2nd image {
+  width: 50%;
+  height: 100%;
+}
+
+.new-car text, .car-2nd text {
+  display: block;
+  width: 50%;
+  height: 100%;
+  line-height: 100rpx;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.de-driving {
+  width: 25%;
+  height: 150rpx;
+  box-sizing: border-box;
+  border: 1px solid #eee;
+}
+
+.de-driving text {
+  display: block;
+  width: 100%;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.de-driving image {
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+  margin: 15rpx auto;
+}
+
+.action {
+  width: 100%;
+  height: 200rpx;
+  padding: 0;
+}
+
+.action image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.banking image{
+  width: 80rpx;
+  height: 60rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+}
+
+.no_border_r{
+  border-right-width: 0px;
+}
+
+.no_border_b{
+  border-bottom-width: 0px;
+}
+.form_button_size{
+      width:19%;
+      height:11%;
+  }

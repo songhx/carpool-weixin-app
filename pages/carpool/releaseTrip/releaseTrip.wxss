@@ -1,0 +1,29 @@
+@import '/static/css/form.wxss';
+@import "/static/css/ui.wxss";
+
+ /**位置*/
+ .location-icon{
+    width:11px;
+    height:15px;
+    margin-top:5rpx;
+    margin-right:13rpx;
+ }
+
+.start-time-picker{
+   width: 69%;
+ }
+ .start-time-picker picker{
+   margin:0 auto;
+}
+ .start-time-picker2{
+  margin-left: 19rpx;
+ }
+
+  .start-time-picker2 picker{
+   margin:0 auto;
+}
+
+ .form_button_size{
+    width:10%;
+    height:5%;
+}

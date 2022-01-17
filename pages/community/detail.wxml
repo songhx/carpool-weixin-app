@@ -1,0 +1,28 @@
+<import src="commentCell.wxml" />
+<import src="mainTabCell.wxml" />
+
+ <block>
+    <template is="mainTabCell" data="{{item}}" />
+</block>
+
+<scroll-view class="scrollview" scroll-y="true">
+    <view class="newcomment" hidden='{{dataList.length <=0 }}'>
+        <text class="comment_text">用户评论</text>
+        <view wx:for="{{dataList}}" wx:for-item="item" wx:key="key">
+            <template is="commentCell" data="{{item}}" />
+        </view>
+    </view>
+      <view class="newcomment" hidden='{{dataList.length > 0 }}'>
+        <text class="comment_text">暂无评论</text>
+       
+    </view>
+</scroll-view>
+
+ <!-- 底部固定评论开始 -->
+  <view class='comment-box'>
+       <view>
+         <input class='comment-input' bindinput="listenerContent" placeholder='✎_评论一下~' value='{{content}}'></input>
+      </view>
+      <view><image bindtap='comment' data-type='1' class='icon' src='https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/send.png'></image></view>
+  </view>
+   <!-- 底部固定评论结束 -->

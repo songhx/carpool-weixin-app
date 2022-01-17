@@ -1,0 +1,212 @@
+<!--index.wxml-->
+<!-- <import src="../sccommon/mainTabCell.wxml" /> -->
+
+<view class="top-tab">
+  <view class="top-tab-item {{currentTopItem==idx ? 'active' : ''}}" wx:for="{{topTabItems}}" wx:for-index="idx" data-idx="{{idx}}" bindtap="switchTab" wx:key="key">
+    {{item}}
+  </view>
+</view>
+
+<swiper class="swiper"  duration="300" style="height:{{swiperHeight}}px" >
+
+  <!--全部-->
+  <swiper-item class="sc-content">
+    <scroll-view class="scrollView" scroll-y="true" bindscrolltolower="loadMoreData" bindscrolltoupper="bindscrolltoupperData" bindscroll="bindscrollData">
+      
+      <block wx:for="{{dataList}}" wx:for-item="item" wx:key="key">
+            <view class="mainTabCell">
+                <!--顶部-->
+                <view class="top" data-url='/pages/community/detail?id={{item.id}}' bindtap='toDetail' >
+                
+                    <!--头像-->
+                    <image class="avator" src="{{item.avatar}}" mode="aspectFit"></image>
+
+                    <!--标题、时间-->
+                    <view class="title-time">
+                        <text class="title">{{item.name}}</text>
+                        <text class="time">{{item.createTime}}</text>
+                    </view>
+                    
+                    <!--更多按钮-->
+                    <image hidden='{{item.isDetail !=null }}'
+                     data-url='/pages/community/detail?id={{item.id}}' bindtap='toDetail' class="morebtnnormal" 
+                     src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/morebtnnormal.png" mode="center" ></image>
+                    
+                </view>
+                    
+                <!--内容-->
+                <view class="content">
+
+                    <view  data-url='/pages/community/detail?id={{item.id}}' bindtap='toDetail' class="content-text">{{item.content}}{{curr_id}}</view>
+                    
+                    <view class='image-items' wx:if="{{item.imageList != null && item.imageList.length > 0 }}">
+                      <view class="image-item"  wx:for="{{item.imageList}}" wx:key="key"  wx:for-item="img">
+                          <image src="{{img}}" bindtap='preImg' data-list="{{item.imageList}}" data-src="{{img}}"></image>
+                        </view>
+                    </view>
+                
+
+                    <!--视频-->
+                     <view  class="video" data-id="{{item.id}}" bindtap="videoPlay" hidden="{{item.videoUrl ? false : true}}" >
+                        <view  wx:if="{{curr_id == item.id}}">
+                          <video  id="myVideo" style="width: 345px;height: calc(9 * 750rpx / 16);"  src="{{item.videoUrl}}"
+                            poster="{{item.bimgUrl}}"  objectFit="cover"  controls></video>
+                        </view>
+                      
+                        <view wx:else>
+                          <image class="model-img" style="width: 345px;height: calc(9 * 750rpx / 16);" mode="aspectFill" src="{{item.bimgUrl}}"></image>
+                          <view class="model-btn">
+                                  <view class="play-icon"></view>
+                          </view>
+                        </view>
+                    </view> 
+                    <!--音频-->
+                    <view class="content-multimedia" hidden="{{item.voiceUrl ? false : true}}">
+                        <audio id="{{item.id}}" src="{{item.voiceUrl}}" poster="{{item.bimgUrl}}" author="{{item.author}}" bindplay="audioplay" bindended="audioEndPlay" controls></audio>
+                    </view>
+                    
+                </view>
+                    
+                <!--底部-->
+                <view class="bottom" hidden='{{item.isDetail !=null }}'>
+
+                    <!--赞-->
+                    <view class="bottom-item" data-id='{{item.id}}' bindtap="zanEvent">
+                        <view class="bottom-item-content">
+                        <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/mainCellDing.png" mode="center"></image>
+                        <text class="bottom-item-zan-text">{{item.agreeNum}}</text>
+                        </view>
+                        <!--分割线-->
+                        <view class="cut-line"></view>
+                    </view>
+
+                    <!--踩-->
+                    <view class="bottom-item" data-id='{{item.id}}' bindtap="dissEvent">
+                        <view class="bottom-item-content cai">
+                        <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/mainCellCai.png" mode="center"></image>
+                        <text class="bottom-item-zan-text">{{item.dissNum}}</text>
+                        </view>
+                        <!--分割线-->
+                        <view class="cut-line"></view>
+                    </view>
+
+                    <!--转发-->
+                    <view class="bottom-item" data-id='{{item.id}}' bindtap='repostEvent'>
+                        <view class="bottom-item-content">
+                        <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/mainCellShare.png" mode="center"></image>
+                        <text class="bottom-item-zan-text">{{item.repostNum}}</text>
+                        </view>
+                        <!--分割线-->
+                        <view class="cut-line"></view>
+                    </view>
+
+                    <!--评论-->
+                    <view class="bottom-item" data-url='/pages/community/detail?id={{item.id}}' bindtap='toDetail' >
+                        <view class="bottom-item-content">
+                        <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/mainCellComment.png" mode="center"></image>
+                        <text class="bottom-item-zan-text">{{item.commentNum}}</text>
+                        </view>
+                    </view>
+
+                </view>
+            </view>
+      </block>
+
+    </scroll-view>
+  </swiper-item>
+
+</swiper>
+
+<!--publish icon-->
+<!-- <view bindtap="showWays" class="phone" style="background-color:#ff5555" >
+    <text class="icox icox-add"></text>
+</view> -->
+ <view bindtap='showWays' class="fixed_right flex flex_center flex_just flex_colum">
+      <image src="/img/publish-select.png"></image>
+      <view>发布</view>
+  </view>
+<!--publish choice pop-->
+ <view class="publish_panel" id="publishItem"  hidden='{{waysPanelHide}}' bindtap="tapHelp">
+        <view class="box">
+          <view class="box-hd">
+            <!-- <image class='box-title' src='https://www.resource.yuntuodev.cn/resource/images/weixin/myy/t.png'></image> -->
+            <image class="box-close" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/close.png" bindtap="hideWays"></image>
+          </view>
+          <view class="box-icons">
+             <!-- <view class='box-icons-item'></view> -->
+             <!-- <view class='box-icons-item' bindtap='choice' data-type='41'>
+                 <image class='box-icon' src='https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/vedio.png'></image>
+                 <text class='box-icon-text'>发视频</text>
+             </view> -->
+             <!-- <view class='box-icons-item'></view> -->
+             <view class='box-icons-item' bindtap='choice' data-type='29'>
+                 <image class='box-icon' src='https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/word.png'></image>
+                 <text class='box-icon-text'>发文字</text>
+             </view>
+              
+              <!-- <view class='box-icons-item' bindtap='choice' data-type='31'>
+                 <image class='box-icon' src='https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/voice.png'></image>
+                 <text class='box-icon-text'>发声音</text>
+             </view> -->
+             <view class='box-icons-item' bindtap='choice' data-type='10'>
+                 <image class='box-icon' src='https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/photo.png'></image>
+                 <text class='box-icon-text'>发图片</text>
+             </view>
+          </view>
+        </view>
+  </view>
+
+<!--publish info-->
+ <view class="publish_panel" id="publishInfo"  hidden='{{publishPanelHide}}' bindtap="tapHelp">
+        <view class="box box-b-w">
+          <view class="box-header">
+            <view bindtap='cancelPublish' class='box-header-cancel font16'>取消</view>
+            <view bindtap='publish' class='box-header-publish font16'>发表</view>
+          </view>
+           <view class="post-comment">
+        <view class="input-box">
+            <textarea class="content"  value='{{content}}' bindinput="listenerContent" maxlength="2000" placeholder="发表信息，请勿涉及色情，政治等违反国家法律的内容！" />
+            <text class="count">{{2000 - content.length}}</text>
+        </view>
+        
+    <block wx:if="{{itype == 10}}">
+      <text class="issues-label">选择图片</text>
+      <view class="issues-img-panel {{(showError&&uploading)?'error':''}}">
+        <view class="issues-photo-item" wx:if="{{uploading}}">
+          <image class="remind-img" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/loading.gif"></image>
+        </view>
+        <view class="issues-photo-item" wx:for="{{imgs}}" wx:key="*this">
+          <image src="{{item}}" mode="aspectFill" data-index="{{index}}" bindtap="previewPhoto"></image>
+        </view>
+         <view class="issues-photo-item add-photo" wx:if="{{!uploading && imgs.length < 10}}" bindtap="choose"></view>
+      </view>
+    </block>
+    <block wx:if="{{itype == 41}}">
+      <text class="issues-label">选择视频</text>
+      <view class="issues-img-panel {{(showError&&uploading)?'error':''}}">
+        <view class="issues-photo-item" wx:if="{{uploading}}">
+          <image class="remind-img" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/loading.gif"></image>
+        </view>
+        <view class="issues-photo-item add-photo" wx:if="{{videoUrl == ''}}" bindtap="choose"></view>
+        <!--视频-->
+            <view class="content-multimedia" hidden='{{videoUrl == ""}}'>
+                <video  src="{{videoUrl}}" data-id='0' id='myVideo' bindplay="videoPlay" bindended="videoEndPlay" catchtap="tapVideo" controls style="width: 345px;height: calc(9 * 750rpx / 16);" ></video>
+            </view>
+      </view>
+    </block>
+    <block wx:if="{{itype == 31}}">
+      <text class="issues-label">录声音</text>
+      <view class="issues-img-panel {{(showError&&uploading)?'error':''}}">
+        <view class="issues-photo-item" wx:if="{{uploading}}">
+          <image class="remind-img" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/loading.gif"></image>
+        </view>
+        <view class="issues-photo-item add-photo" wx:if="{{voiceUrl == ''}}" bindtap="choose"></view>
+          <!--音频-->
+            <view class="content-multimedia" hidden="{{voiceUrl == ''}}">
+                <audio  src="{{item.voiceUrl}}" bindplay="audioplay" bindended="audioEndPlay" controls></audio>
+            </view>
+      </view>
+    </block>
+      </view>
+        </view>
+  </view>

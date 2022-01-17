@@ -1,0 +1,315 @@
+@import 'components/wux.wxss';
+@import 'assets/styles/weui.wxss';
+page{
+   background:#f4f4f4;
+   color: #666;
+}
+.container {
+  box-sizing: border-box;
+  background-color: #f4f4f4;
+  font-family: PingFangSC-Light,helvetica,'Heiti SC';
+  color: #666;
+}
+
+.banner {
+  height:300rpx;
+  /* border-radius:16rpx; */
+  overflow:hidden;
+}
+
+.banner image {
+  width: 100%;
+  height:300rpx;
+} 
+
+.content{
+   width:98%;
+   margin:0 auto;
+}
+
+.row { display:flex; flex-direction:row; }
+.column { display:flex; flex-direction:column; }
+
+.dis-color{
+  background:#CECECE;
+}
+
+.price-input{
+  width:123rpx;
+  font-size: 10pt;
+  color: #888;
+}
+.unit-text{
+  font-size: 10pt;
+  color: #888;
+}
+
+
+.flex {
+	display: flex;
+	display: -webkit-flex;
+}
+
+.flex_just {
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+
+.flex_center {
+	-webkit-align-items: center;
+	-webkit-align-content: center;
+}
+
+.flex_colum {
+	-webkit-flex-direction: column;
+	flex-direction: column;
+}
+
+.flex_wrap {
+	flex-wrap: wrap;
+}
+
+.flex_1 {
+	flex: 1;
+	-webkit-flex: 1;
+}
+
+.flex_around {
+	justify-content: space-around;
+}
+
+.flex_between {
+	justify-content: space-between;
+}
+
+.flex_start {
+	justify-content: flex-start;
+}
+
+.flex_end {
+	justify-content: flex-end;
+}
+
+.mb13{
+    margin-bottom:13rpx;
+}
+.mb10{
+    margin-bottom:10rpx;
+}
+.mb5{
+    margin-bottom:5rpx;
+}
+.mb30{
+    margin-bottom:30rpx;
+}
+.line42{
+    line-height:42rpx;
+}
+.mt6{
+    margin-top:6rpx;
+}
+.C000{
+    color:#000;
+}
+.C655E{
+    color:#FF655E;
+}
+.C666{
+    color:#666;
+}
+.Cfff{
+    color:#fff;
+}
+.C999{
+    color:#999;
+}
+.Cf3f{
+    color:#FF3F3F
+}
+.C9000{
+    color:#FF9000;
+}
+.C8811{color:#FF8811}
+.C33b{
+    color:#60A33B
+}
+.C2A2A{
+    color:#2A2A2A;
+}
+.ptb10{
+    padding-top:20rpx;
+    padding-bottom:20rpx;
+}
+.strong{
+    font-weight: bold;
+}
+.font15{
+    font-size:30rpx;
+}
+.font18{
+    font-size:36rpx;
+}
+.font12{
+    font-size:24rpx;
+}
+.font14{
+    font-size:28rpx;
+}
+.font16{
+    font-size:32rpx;
+}
+.font24{
+    font-size:48rpx;
+}
+.font25{
+    font-size:50rpx;
+}
+.bg_ff{
+    background:#fff;
+}
+.border_bottom{
+    border-bottom:1px solid #eee;
+}
+.border_none{
+    border:none;
+}
+
+/***悬浮提示***/
+.fixed_right{
+    width:124rpx;
+    height:124rpx;
+    position:fixed;
+    right:0;
+    bottom:300rpx;
+    border-top-left-radius: 10rpx;
+    border-bottom-left-radius: 10rpx;
+    background:rgba(76,76,76,0.6);
+
+}
+.fixed_right image{
+    width:46rpx;
+    height:46rpx;
+    margin-bottom:16rpx;
+}
+.fixed_right view{
+    color:#fff;
+    font-size:20rpx;
+}
+.float_box{
+    position:relative;
+}
+.float_box .tip{
+    position:absolute;
+    top:390rpx;
+    left:120rpx;
+}
+
+.form_button{
+    background-color:transparent; 
+    position: absolute;
+    z-index: 100;
+    padding:0;
+    margin:0;
+    display:inline;
+    /* position:static; */
+    border-bottom-width: 0px;
+    border:0;
+    padding-left:0;
+    padding-right:0;
+    border-radius:0;
+    font-size:0rpx;
+    color:transparent;
+  }
+
+  .form_button::after{
+    content:'';
+    -webkit-transform:scale(1);
+    transform:scale(1);
+    display:none;
+    background-color:transparent;
+  }
+
+/**成功提示框*/
+  .mask{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 999;
+}
+.strong{
+  font-weight:bold;
+}
+
+
+.float_box{
+    position:relative;
+}
+.float_box .tip{
+    position:absolute;
+    top:390rpx;
+    left:120rpx;
+}
+.sure_btn{
+    width:400rpx;
+    height:88rpx;
+    background: #81C95A;
+    color:#fff;
+    text-align:center;
+    line-height:88rpx;
+    border-radius: 40.5rpx;
+    font-size:36rpx;
+    position:absolute;
+    bottom:120rpx;
+    left:76rpx;
+
+}
+.float_box image{
+    width:545rpx;
+    height:760rpx;
+}
+
+/**tabs*/
+.tabs{
+    height:100rpx;
+}
+.tabs view{
+    height:100rpx;
+    line-height:100rpx;
+}
+.tabs .active{
+    height:95rpx;
+    line-height:95rpx;
+    border-bottom:5rpx solid #FB6B2B;
+    color:#FB6B2B;
+}
+
+/**提示样式*/
+.fix_tip{
+    position: fixed;
+    bottom: 50rpx;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translate3d(0, 80rpx, 0);
+    transition: all .5s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 100;
+}
+.fix_tip.active{
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+.fix_tip text{
+    font-size: 9pt;
+    line-height: 100%;
+    padding: 10rpx 20rpx;
+    border-radius: 10rpx;
+    background: rgba(66,66,66,.6);
+    color: #fff;
+}

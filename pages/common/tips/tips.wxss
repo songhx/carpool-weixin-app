@@ -1,0 +1,61 @@
+page{
+  background: #FFF;
+}
+.container{
+  background: #FFF;
+  min-height: 100%;
+  text-align: center;
+  margin-top: 120rpx;
+}
+.s-tip{
+  font-size: 32rpx;
+  color:#FF8811;
+  text-shadow: 1px 1px 1px #fb855a;
+}
+.s-imgbox{
+width: 100%;
+  text-align: center;
+  padding-top: 34rpx;
+  padding-bottom: 50rpx;
+}
+.s-img{
+  border-radius: 50%;
+  width: 280rpx;
+  height: 280rpx;
+  
+}
+.s-content{
+  width: 100%;
+  text-align: center;
+}
+.s-content .t{
+  font-size: 32rpx;
+  color: #4e4e4e;
+  line-height: 48rpx;
+}
+.t1{
+display: block;
+}
+
+.btn-t{
+  margin-top: 400rpx;
+  text-align: center;
+  font-size:12pt;
+}
+.btn-t .btn{
+  width: 299rpx;
+  text-align: center;
+  background-image: linear-gradient(90deg, #FDA456 3%, #FB6B2B 100%);
+  box-shadow: 0 0 7px 0 rgba(251,107,43,0.76);
+  color: #FFF;
+  height: 78rpx;
+  border-radius: 78rpx;
+  line-height: 78rpx;
+  border: none;
+}
+.btn-t .btn1{
+  /* margin-left: 13%; */
+}
+.btn-t .btn2{
+  margin-left: 22rpx;
+}

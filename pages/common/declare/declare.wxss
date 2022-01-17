@@ -1,0 +1,43 @@
+@import "/static/css/common.wxss";
+
+.content-box {
+  background: #fff;
+  padding-top:3px;
+  padding-bottom:30px;
+
+}
+.content {
+  height: 100%;
+  background: #fff;
+}
+.title{
+  margin-left:10px;
+  margin-right:10px;
+  font-weight: bold;
+  color: #666;
+  line-height: 39px;
+  font-size:11pt;
+}
+.viewinfo{
+  margin-left:23px;
+  margin-right:10px;
+  font-size:11pt;
+  color:#666;
+  line-height:23px;
+
+}
+
+
+  .subscribe-sub{
+    height:85rpx;
+    line-height:85rpx;
+    margin:29.5rpx 13%;
+    text-align:center;
+    background-image: linear-gradient(90deg, #FDA456 3%, #FB6B2B 100%);
+    box-shadow: 0 0 7px 0 rgba(251,107,43,0.76);
+    border-radius:10rpx;
+    font-size:32rpx;
+    color:#FFFFFF;
+    letter-spacing:-0.01rpx;
+
+ }

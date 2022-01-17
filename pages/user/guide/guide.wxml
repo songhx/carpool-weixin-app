@@ -1,0 +1,60 @@
+
+<!--pages/caruser/caruser.wxml-->
+<view class="content">
+  <view  class="content-box"> 
+    <view class="title" >
+    1.车主如何发布信息?
+    </view>
+    <view class="viewinfo" >
+    进入"{{appName}}"界面，点击发布，按照提示填写表单，信息无误点击【发布】按钮，即可发布信息。   
+     </view>
+    <view class="title" >
+    2.乘客如何预订座位?
+    </view>
+    <view class="viewinfo" >
+    进入"{{appName}}"界面，选择【起点】或【终点】筛选信息，点击相应信息进入查看。确认无误，选择乘客人数点击【预订】按钮完成座位的预订。
+    </view>
+    <view class="title" >
+    3.车主如何同意或拒绝乘客预订?
+    </view>
+    <view class="viewinfo" >
+    乘客预订后微信聊天界面收到"服务通知"，点击查看请求通知，信息无误点击【确定】按钮完成请求的确认。反之，输入拒绝原因点击【取消】按钮拒绝请求。
+    </view>
+   <view class="title" >
+    4.针对长期固定路线，如何快捷发布信息?
+    </view>
+    <view class="viewinfo" >
+    在"{{appName}}"我的"界面单击【记录】模块查看已发布信息，选择历史发布记录，点击【重新发布】更改对应信息点击【发布】完成信息的快捷发布。    
+    </view>
+   <view class="title" >
+    5.若车主或乘客任何一方取消行程，如何操作?
+    </view>
+    <view class="viewinfo" >
+    车主在"我的"界面单击【记录】模块查看已发布信息，单击选择对应发布信息查看详情，点击【关闭行程】则车主完成行程的取消，为方便平台管理，车主在有用户前提下不可【修改流程】。
+    </view>
+    <view class="viewinfo" >
+    乘客在"我的"界面单击【记录】模块查看已信息，单击选择对应信息查看详情，点击【预订取消】或【取消】则乘客完成行程的取消。
+    </view>
+    <view class="title" >
+    6.如何快速找到"{{appName}}"?
+    </view>
+    <view class="viewinfo" >
+    在微信【发现】—>【小程序】界面搜索栏输入"{{appName}}"，点击"{{appName}}"即可完成{{appName}}小程序的首次快速添加。
+    </view>
+    <view class="title" >
+    7.如何快速访问"{{appName}}"?
+    </view>
+    <view class="viewinfo" >
+    苹果用户在首页【拼车】界面，点击顶端右侧按钮选择"显示在聊天顶部"即可，再次访问可在微信首页顶部看到"{{appName}}"入口。
+    </view>
+    <view class="viewinfo" >
+    安卓用户在首页【拼车】界面，点击顶端右侧按钮选择"添加到桌面",再次访问可在手机桌面上看到"{{appName}}"入口。
+    </view>
+    <view class="title" >
+    8.如何推荐给朋友?
+    </view>
+    <view class="viewinfo" >
+    进入小程序，在【拼车】首页点击顶端右侧按钮选择"分享"按钮， 发送到好友完成小程序好友推荐。
+    </view>
+  </view>
+</view>

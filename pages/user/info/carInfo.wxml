@@ -1,0 +1,91 @@
+<view class="container">
+  <form bindsubmit="submit" report-submit='true' >
+        <view class="info_box bg_ff">
+            <view class="input_box flex flex_center">
+                <text class="C666 font15 label">品牌车系</text>
+                <input type="text" name="carBrand"  value='{{carpoolCar.carBrand}}' placeholder="例如: 宝马（3X）" />
+            </view>
+            <view class="input_box flex flex_center">
+                <text class="C666 font15 label">车辆类型</text>
+                <picker bindchange="lisentCarTypeChanges" value="{{carTypeList[carTypeIndex]}}" range="{{carTypeList}}" >
+                      <view class="picker flex flex_between flex_center">
+                        <view>{{carTypeList[carTypeIndex]}}</view>
+                        <image src='https://e-carpool.oss-cn-beijing.aliyuncs.com/down.png'  class='com-sImg'></image>
+                      </view>
+                  </picker>
+            </view>
+            <view class="input_box flex flex_center">
+                <text class="C666 font15 label">车辆颜色</text>
+                <picker bindchange="lisentColorChanges" value="{{colorList[colorIndex]}}" range="{{colorList}}" >
+                      <view class="picker flex flex_between flex_center">
+                        <view>{{colorList[colorIndex]}}</view>
+                        <image src='https://e-carpool.oss-cn-beijing.aliyuncs.com/down.png'  class='com-sImg'></image>
+                      </view>
+                  </picker>
+            </view>
+            <view class="input_box flex flex_center">
+                <text class="C666 font15 label">座位数</text>
+                <picker bindchange="lisentSeatChanges" value="{{seatList[seatIndex]}}" range="{{seatList}}">
+                    <view class="picker flex flex_between flex_center">
+                      <view>{{seatList[seatIndex]}}</view>
+                      <image src='https://e-carpool.oss-cn-beijing.aliyuncs.com/down.png'  class='com-sImg'></image>
+                    </view>
+                </picker>
+            </view>
+             <view class="input_box flex flex_center">
+                <text class="C666 font15 label">车牌号</text>
+                <view class='row'>
+                   <view class='license_prefix'>
+                       <picker class='license' bindchange="lisentLisencePrefixChanges" 
+                          value="{{lisencePrefixList[lisencePrefixIndex]}}" range="{{lisencePrefixList}}">
+                            <view class="picker flex flex_between flex_center">
+                              <view>{{lisencePrefixList[lisencePrefixIndex]}}</view>
+                              <image src='https://e-carpool.oss-cn-beijing.aliyuncs.com/down.png'  class='com-sImg'></image>
+                            </view>
+                        </picker>
+                   </view>
+                   <view class='license_numbers'>
+                      <input type="text" name="plateNumber"  value='{{carpoolCar.plateNumber}}' placeholder="请输入车牌号码" />
+                   </view>
+                </view>
+                
+            </view>
+        </view>
+
+        <view wx:if="{{upload}}" class="detail_img bg_ff">
+            <view class="C666 font15"  style="margin-bottom:12rpx;">驾驶证首页</view>
+            <view class="issues-img-panel {{(showError&&uploading)?'error':''}} center">
+              <view class="issues-photo-item" wx:if="{{uploading0}}">
+                <image class="remind-img" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/loading.gif"></image>
+              </view>
+              <view class="issues-photo-item" wx:for="{{icons}}" wx:key="*this" >
+                <image src="{{item}}" mode="aspectFill" data-index="{{index}}" data-tag="0" bindtap="previewPhoto" bindlongpress="removePhoto"></image>
+              </view>
+              <view class="issues-photo-item add-photo" wx:if="{{!uploading && icons.length < 1}}" data-tag='0'  bindtap="choosePhoto" >
+                 <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/add.png"></image>
+              </view>
+            </view>
+             <view class="font14 C999 tip">大小不能超过1M</view>
+        </view>
+      
+
+         <view wx:if="{{upload}}" class="detail_img bg_ff">
+            <view class="C666 font15"  style="margin-bottom:12rpx;">行驶证首页</view>
+            <view class="issues-img-panel {{(showError&&uploading)?'error':''}} center">
+              <view class="issues-photo-item" wx:if="{{uploading}}">
+                <image class="remind-img" src="https://e-carpool.oss-cn-beijing.aliyuncs.com/loading.gif"></image>
+              </view>
+              <view class="issues-photo-item" wx:for="{{imgs}}" wx:key="*this">
+                <image src="{{item}}" mode="aspectFill" data-index="{{index}}" data-tag="1" bindtap="previewPhoto" bindlongpress="removePhoto"></image>
+              </view>
+              <view class="issues-photo-item add-photo" wx:if="{{!uploading && imgs.length < 1}}" data-tag='1' bindtap="choosePhoto">
+                 <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/add.png"></image>
+              </view>
+            </view>
+             <view class="font14 C999 tip">大小不能超过1M</view>
+        </view>
+
+        <button form-type="submit"   class='submit-btn'>确认</button>
+      
+  </form>
+</view>

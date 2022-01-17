@@ -1,0 +1,25 @@
+<view class="header" hidden="{{hideHeader}}">
+  <view>下拉刷新中……</view>
+</view>
+
+<scroll-view scroll-y="true" class="container">
+
+  <block wx:for="{{list}}" wx:key="{{item.id}}">
+    <view class="list_item">
+        <view class="title">{{item.title}}</view>
+        <view class="con">{{item.content}}</view>
+    </view>
+  </block>
+
+</scroll-view>
+
+
+<view class="n-bottom" hidden="{{hideBottom}}">
+  <view>
+    <view class='transverseline'><text class='line'></text></view>
+
+    <text class='txt'>{{loadMoreData}}</text>
+
+    <view class='transverseline'><text class='line'></text></view>
+  </view>
+</view>

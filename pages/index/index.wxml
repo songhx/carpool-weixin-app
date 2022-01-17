@@ -1,0 +1,182 @@
+<!--index.wxml-->
+<view class="container">
+
+    <!-- 轮播图开始-->
+    <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="2000">
+        <swiper-item wx:for="{{banner}}" wx:key="{{item.id}}">
+            <image src="{{item.image_url}}" background-size="cover"></image>
+        </swiper-item>
+    </swiper>
+    <!-- 轮播图结束-->
+
+    <!-- 公告开始 -->
+    <navigator url='/pages/announcement/announcement'>
+        <view wx:if="{{notice != null }}" class="announcement flex bg_ff">
+            <view class="left_part flex flex_colum flex_center">
+                <view class="font18  mb13">公告</view>
+                <view style="position:relative;">
+                    <image src="/static/images/icon_active.png"></image>
+                    <text class="txt Cfff font14">公告</text>
+                </view>
+            </view>
+            <view class="right_part flex flex_center flex_1">
+                <view class="flex_1">
+                    <view class="title">{{notice.title}}</view>
+                    <view class="desc C999 font12">
+                        {{notice.content}}
+                    </view>
+                </view>
+                <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/icon_go.png"></image>
+            </view>
+        </view>
+    </navigator>
+    <!-- 公告结束 -->
+
+    <!--功能导航开始-->
+    <view wx:if="{{navs}}" class="navs">
+        <block wx:for="{{navs}}" wx:key="nav">
+            <form bindsubmit="navTo" report-submit='true' class="navs-item">
+                <input hidden='true' name="login" value='{{item.needLogin}}'></input>
+                <input hidden='true' name="skip" value='{{item.skipTo}}'></input>
+                <input hidden='true' name="open" value='{{item.open}}'></input>
+                <button form-type="submit" class='form_button'></button>
+                <view>
+                    <image class="navs-icon" src="{{item.icon}}" alt="{{item.tip}}"></image>
+                    <view class="navs-name">{{item.name}}</view>
+                </view>
+            </form>
+        </block>
+        <view class="fix_tip {{isActiveTips?'active':''}}">
+            <text>{{tipTxt}}</text>
+        </view>
+    </view>
+    <!--功能导航结束 -->
+
+    <!--拼车记录开始-->
+    <view wx:if="{{carpoolSubscribe != null && carpoolPublish != null}}" class="carpool-record bg_ff">
+        <view class="common_title font15 flex flex_center">
+            <view class="tag"></view>
+            <view>最近出行</view>
+        </view>
+        <view class="tabs flex flex_center flex_just">
+            <view bindtap='swithchTab' class="{{tabIndex == 0 ? 'on' : ''}}" data-index='0'>
+                <text class="font16">我的发布</text>
+                <text wx:if="{{carpoolPublish != null}}" class="red_dot"></text>
+            </view>
+            <view bindtap='swithchTab' class="{{tabIndex == 1 ? 'on' : ''}}" data-index='1'>
+                <text class="font16">我的预约</text>
+                <text wx:if="{{carpoolSubscribe != null}}" class="red_dot"></text>
+            </view>
+        </view>
+        <view class="detail">
+
+          <block  wx:if="{{tabIndex == 0 && carpoolPublish != null}}">
+              <view class="flex flex_between flex_center name_box" >
+                  <view class="left_part flex flex_center">
+                      <image src="{{userInfo.avatar}}"></image>
+                      <view class="font16 strong">{{userInfo.nickName}}</view>
+                  </view>
+                  <view class="state C8811">{{statusArr[carpoolPublish.status]}}</view>
+              </view>
+              <view class="process">
+                  <view class="flex flex_between mb30">
+                      <view class="part_one flex">
+                          <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_01.png"></image>
+                          <view class="font15 flex_1 line42">{{carpoolPublish.departureTime}}</view>
+                      </view>
+                      <view class="font15 C666">总{{carpoolPublish.passengerNum}}座</view>
+                  </view>
+                  <view class="part_one flex mb30">
+                      <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_02.png"></image>
+                      <view class="font15 flex_1 line42">{{carpoolPublish.startPoint}}</view>
+                  </view>
+                  <view class="part_one flex mb30">
+                      <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_03.png"></image>
+                      <view class="font15 flex_1 line42">{{carpoolPublish.byWays || ""}}</view>
+                  </view>
+                  <view class="part_one flex mb30">
+                      <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_04.png"></image>
+                      <view class="font15 flex_1 line42">{{carpoolPublish.destination}}</view>
+                  </view>
+              </view>
+              <view class="price_box flex flex_between">
+                  <view class="font16 C999">￥{{carpoolPublish.price}}元/位</view>
+                  <image  wx:if="{{carpoolPublish.status!=0 && carpoolPublish.status!=4}}" bindtap='relPublish' data-id='{{carpoolSubscribe.id}}' 
+                      src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/btn_post.png"></image>
+              </view>
+           </block>
+
+           <block wx:if="{{tabIndex == 1 && carpoolSubscribe != null}}">
+              <view class="flex flex_between flex_center name_box" >
+                  <view class="left_part flex flex_center">
+                      <image src="{{userInfo.avatar}}"></image>
+                      <view class="font16 strong">{{userInfo.nickName}}</view>
+                  </view>
+                  <view class="state C8811">{{statusArr[carpoolSubscribe.status]}}</view>
+              </view>
+              <view class="process">
+                  <view class="flex flex_between mb30">
+                      <view class="part_one flex">
+                          <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_01.png"></image>
+                          <view class="font15 flex_1 line42">{{carpoolSubscribe.departureTime}}</view>
+                      </view>
+                      <view class="font15 C666">总{{carpoolSubscribe.passengerNum}}人</view>
+                  </view>
+                  <view class="part_one flex mb30">
+                      <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_02.png"></image>
+                      <view class="font15 flex_1 line42">{{carpoolSubscribe.startPoint}}</view>
+                  </view>
+                 
+                  <view class="part_one flex mb30">
+                      <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/pro_04.png"></image>
+                      <view class="font15 flex_1 line42">{{carpoolSubscribe.destination}}</view>
+                  </view>
+              </view>
+              <view class="price_box flex flex_between">
+                  <view class="font18 C999"></view>
+                  <image wx:if="{{carpoolSubscribe.status!=0 && carpoolSubscribe.status!=4}}" bindtap='relPublish' data-id='{{carpoolSubscribe.id}}' 
+                         src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/btn_post.png"></image>
+              </view>
+           </block>
+
+
+        </view>
+    </view>
+
+    <!--车友资讯开始-->
+    <view wx:if="{{articleList != null && articleList.length > 0}}" class='info-list bg_ff'>
+       <navigator url='/pages/news/index'>
+          <view class="common_title font15 flex flex_center flex_between">
+              <view class="flex flex_center">
+                  <view class="tag"></view>
+                  <view>车资讯</view>
+              </view>
+              <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/icon_go.png"></image>
+          </view>
+        </navigator>
+        <block wx:for="{{articleList}}" wx:key="{{item.id}}">
+         <navigator url='/pages/news/details?id={{item.id}}'>
+              <view class="single_item flex flex_center">
+                    <image class="por" src="{{item.url}}"></image>
+                    <view class="info flex_1">
+                        <view class="title font16 C333">{{item.title}}</view>
+                        <view class="C999 font14 desc">{{item.resume}}</view>
+                        <view class="flex flex_between">
+                            <view class="flex flex_center">
+                                <image class="icon_eye" 
+                                      src="https://e-carpool.oss-cn-beijing.aliyuncs.com/n-icon/icon_eye.png"></image>
+                                <view class="font14 C999">{{item.viewNum}}</view>
+                            </view>
+                            <view class="font14 C999">{{item.publishTime}}</view>
+                        </view>
+                    </view>
+                </view>
+         </navigator>
+          
+        </block>
+    </view>
+    <!--车友资讯结束-->
+
+
+</view>
+  

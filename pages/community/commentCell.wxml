@@ -1,0 +1,25 @@
+<!--评论列表cell模板-->
+<template name="commentCell">
+    <view class="commentCell">
+        <view class="user">
+            <image class="usericon" src="{{item.avatar}}" mode="scaleToFill"></image>
+            <!--<view class="user_zan">
+                <text >42</text>
+            </view>-->
+            <text class="username">{{item.name}}</text>
+            <view class="ding" catchtap='zanEvent' data-id='{{item.id}}'>
+                <text>{{item.agreeNum}}</text>
+                <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/icon/mainCellDing.png" mode="center" ></image>
+            </view>
+            
+        </view>
+        <view >
+            <view class="ding_count">
+                <text class="">VIP</text>
+            </view>
+            <view class="content_text">
+                <text>{{item.content}}</text>
+            </view>
+        </view>
+    </view>
+</template>

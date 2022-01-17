@@ -1,0 +1,20 @@
+.
+├── README.md
+├── app.js
+├── app.json
+├── app.wxss
+├── assets
+├── components
+├── config
+├── doc
+├── img
+├── lib
+├── pages
+├── project.config.json
+├── services
+├── sitemap.json
+├── static
+├── tree.txt
+└── utils
+
+10 directories, 7 files

@@ -1,0 +1,8 @@
+<view wx:if="{{canIUse}}" class="login_box">
+    
+    <button class='submit-btn'  open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="login">
+        授权登录
+    </button>
+</view>
+
+<view wx:else>请升级微信到最新版本</view>

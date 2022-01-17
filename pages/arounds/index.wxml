@@ -1,0 +1,67 @@
+<view class="header">
+  <view class="limit">
+     <text class="tips">限行尾号</text>  <text class='limit_no'> {{wh}}</text>
+  </view>
+  <view class="weather">
+    <image src="{{weatherData.img}}"></image>
+    <text>{{weatherData.temperature}}</text> 
+    <text class="wash-car">{{washingCar.title}}  {{washingCar.zs}}</text>
+  </view>
+</view>
+
+
+
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" indicator-active-color="#fff100">
+  <block wx:for="{{imgUrls}}" wx:key="key">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" height="100" />
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="car">
+  <view class="title">
+    附近
+  </view>
+  <view class="nearby">
+    <form bindsubmit="navTo" report-submit='true'  class="nearby-service" wx:for="{{nearby}}" wx:key="key">
+     <input hidden='true' name="skip"  value='/pages/arounds/proximity/proximity?searchKey={{item.text}}'></input> 
+        <button form-type="submit"   class='form_button form_button_size'></button> 
+      <view class="icon-item">
+
+        <image src="{{item.url}}"></image>
+      </view>
+      <text>{{item.text}}</text>
+    </form>
+  </view>
+</view>
+<view class="car">
+  <view class="title">
+    服务
+  </view>
+  <view class="service">
+    <view class="new-car no_border_r no_border_b" bindtap="navDisabledTip">
+      <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/arounds/jtb_icn_new@2x.png"></image>
+      <text>新车购买</text>
+    </view>
+    <view class="car-2nd banking no_border_b" bindtap="navDisabledTip">
+      <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/arounds/jtb_icn_money@2x.png"></image>
+      <text>金融汽车</text>
+    </view>
+    <view class="car-2nd no_border_r" bindtap="navDisabledTip">
+      <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/arounds/jtb_pic_second_hand_car@2x.png"></image>
+      <text>二手车评估</text>
+    </view>
+    <view class="de-driving no_border_r" bindtap="navDisabledTip">
+      <text>代驾服务</text>
+      <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/arounds/jtb_icn_driving@2x.png"></image>
+    </view>
+    <view class="de-driving" bindtap="navDisabledTip">
+      <text>车险投保</text>
+      <image src="https://e-carpool.oss-cn-beijing.aliyuncs.com/arounds/jtb_icn_cover%402x.png"></image>
+    </view>
+  </view>
+</view>
+<view class="fix_tip {{isActiveTips?'active':''}}">
+  <text>{{tipTxt}}</text>
+</view>

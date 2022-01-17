@@ -1,0 +1,251 @@
+page{
+    background-color:#f4f4f4;
+}
+view,text{
+  font-family: PingFangSC-Light,helvetica,'Heiti SC';
+  font-size: 29rpx;
+  color: #666;
+}
+input::-webkit-input-placeholder {
+  color: rgb(153,153,153);
+  font-size: 30rpx;
+}
+.info_box{
+    margin-bottom:20rpx;
+}
+.input_box{
+    padding:0 30rpx;
+    height:100rpx;
+    border-bottom:1px solid #E1E1E1;
+}
+.input_box:last-child{
+    border-bottom:none;
+}
+.label{
+    width:166rpx;
+}
+.input_box input{
+    flex:1;
+}
+.state_box{
+    padding:17rpx 30rpx 0;
+}
+.single_line{
+    padding:13rpx 30rpx;
+    border-bottom:1px solid #E1E1E1;
+}
+
+.single_line .gray_bg{
+    background:red;
+    width:300rpx;
+    
+}
+.pink{
+    color:pink;
+}
+.icon_check_on {
+    width:24rpx;
+    height:24rpx;
+    margin-right:10rpx;
+}
+.icon_check{
+    width:24rpx;
+    height:24rpx;
+    margin-right:10rpx;
+}
+textarea{
+    width:470rpx;
+    height:222rpx;
+    background: #F6F6F6;
+    border: 1px solid #EFEFEF;
+    border-radius: 6px;
+    margin-bottom:17rpx;
+    padding:10rpx;
+}
+.select_box{
+    margin-top:20rpx;
+    padding:30rpx;
+}
+.icon_choose{
+    width:160rpx;
+    height:160rpx;
+    margin:20rpx 0 15rpx;
+}
+.detail_img{
+    padding:30rpx;
+    padding-bottom:50rpx;
+    border-top:1px solid #E1E1E1;
+}
+.single_img{
+    width:160rpx;
+    height:160rpx;
+    margin:8rpx;
+    border:1px solid #ddd;
+    border-radius:10rpx;
+    float:left;
+}
+.icon_add{
+    width:160rpx;
+    height:160rpx;
+    margin:8rpx;
+}
+.tip{
+    margin-top:30rpx;
+    text-align:center;
+}
+.btn_add_box{
+    height:210rpx;
+}
+.btn_add{
+    width:480rpx;
+    height:100rpx;
+    background: #FF8811;
+    box-shadow: 0 8rpx 16rpx 0 #FF8811;
+    border-radius: 48.5rpx;
+    text-align:center;
+    line-height:100rpx;
+}
+
+
+
+.issues-label{
+    font-size: 10pt;
+    line-height: 100%;
+    color: #999;
+    margin: 25rpx 20rpx 15rpx;
+}
+.issues-panel{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: #fff;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+.issues-img-panel{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    padding: 15rpx 25rpx;
+}
+.issues-img-panel.error{
+    background: rgba(231, 138, 176, 0.06);
+}
+.issues-input{
+    border-bottom: 1px solid #e5e5e5;
+    padding: 15rpx 25rpx;
+}
+.issues-input.error{
+    background: rgba(231, 138, 176, 0.06);
+}
+.issues-textarea{
+    width: 100%;
+    padding: 25rpx;
+    min-height: 225rpx;
+    box-sizing: border-box;
+}
+.issues-textarea.error{
+    background: rgba(231, 138, 176, 0.06);
+}
+.issues-photo-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:160rpx;
+    height:160rpx;
+    margin: 20rpx;
+    margin-right: 0;
+
+}
+.issues-photo-item:active{
+    opacity: .8;
+}
+.issues-photo-item .remind-img{
+    padding: 0;
+}
+.issues-photo-item image{
+    width: 100%;
+    height: 100%;
+}
+.add-photo:active {
+    background: #f0f0f0;
+}
+.add-photo::before, .add-photo::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #e5e5e5;
+}
+.add-photo:active::before, .add-photo:active::after{
+    background: #ddd;
+}
+.add-photo::before {
+    width: 10rpx;
+    height: 80rpx;
+    margin-top: -40rpx;
+    margin-left: -5rpx;
+}
+.add-photo::after {
+    width: 80rpx;
+    height: 10rpx;
+    margin-top: -5rpx;
+    margin-left: -40rpx;
+}
+.issues-remind {
+    flex: 1;
+    font-size: 9pt;
+    line-height: 135%;
+    color: #666;
+    padding: 0 30rpx;
+    word-break: break-all;
+    text-indent: 1em;
+    padding-top: 30rpx;
+}
+.issues-remind.text-center{
+    text-align: center;
+}
+.submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 39rpx 13%;
+    height:86rpx;
+    background-image: linear-gradient(90deg, #FDA456 3%, #FB6B2B 100%);
+    box-shadow: 0 0 7px 0 rgba(251,107,43,0.76);
+    border-radius: 39.5rpx;
+    text-align:center;
+    color: #fff;
+    font-size: 12pt;
+    line-height: 150%;
+    padding: 0;
+    border: none;
+}
+.submit-btn.disabled{
+    opacity: .7;
+}
+.submit-btn:active{
+    opacity: .7;
+}
+
+.no_center{
+    justify-content: flex-start;
+}
+.center{
+    justify-content: center;
+}
+
+picker{
+    flex:1;
+    border-bottom: 1px solid #EFEFEF;
+    border-radius: 6rpx;
+    height:51rpx;
+    line-height:51rpx;
+    padding:5rpx 16rpx;
+    margin:0 6% 0 0;
+}
+.com-sImg{
+    width: 19rpx;
+    height: 16rpx;
+}
