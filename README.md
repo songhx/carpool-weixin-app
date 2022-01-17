@@ -13,7 +13,12 @@
 ## 项目功能截图
 
 ![home](doc/pics/home.png) 
-
+![publish](doc/pics/publish.png)
+![search_user](doc/pics/search_user.png)
+![trips](doc/pics/trips.png)
+![comment-list](doc/pics/comment-list.png)
+![arounds](doc/pics/arounds.png)
+![mine](doc/pics/mine.png)
 ## 项目结构
 ```
 .
